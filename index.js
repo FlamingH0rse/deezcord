@@ -1,92 +1,49 @@
 const botconfig = require('./config.json');
 const fs = require('fs')
+const readline = require('readline')
 
+const sound = require('sound-play')
 //discord:
 const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions] });
-const { REST } = require('@discordjs/rest'), { Routes } = require('discord-api-types/v9');
-
-//for mongodb
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const mongoClient = new MongoClient(botconfig.uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-const insert_pipeline = [{ $match: { operationType: 'insert' } }]
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent] });
 
 client.commands = new Discord.Collection()
-client.events = new Discord.Collection()
-client.userState = new Discord.Collection()
 
 const slashCommandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-let slashCommands = []
 for (const file of slashCommandFiles) {
     const command = require(`./commands/${file}`)
     client.commands.set(command.data.name, command);
-    slashCommands.push(command.data.toJSON());
 }
 
-const eventFiles = fs.readdirSync('./events/').filter(file => file.endsWith('.js'));
-for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
-    client.events.set(event.data.name, event)
-}
-
-let mongoData = {}
-function connectDatabase() {
-    mongoClient.connect(async err => {
-        if (err) throw new Error(err)
-        console.log('Connected to MongoDB')
-        let Collections = await mongoClient.db("bot").listCollections().toArray()
-        let collList = Collections.map(c => c.name)
-        for (let name in collList) {
-            mongoData[collList[name]] = mongoClient.db("bot").collection(collList[name])
-        }
-        console.log('Cached all collections')
-    })
-    return
-}
-
+const rl = readline.createInterface({input: process.stdin, output: process.stdout})
+let currentChannelId = botconfig.channelId
+let currentGuildId = botconfig.guildId
 client.once('ready', async () => {
     console.log('Connected to Discord')
-    client.user.setActivity("Anark City", {
+    client.user.setActivity("My Slave", {
         type: "PLAYING",
         url: "https://www.lol.com"
     });
-    await connectDatabase()
+    /*
+    let owner = await client.users.fetch(botconfig.ownerID)
+    if (owner) {
+        client.user.setUsername(owner.username)
+        client.user.setAvatar(owner.displayAvatarURL())
+    }
+    */
+    let currentGuild = client.guilds.cache.get(currentGuildId)
+    let currentChannel = currentGuild.channels.cache.get(currentChannelId)
+
+    rl.on('line', msg => {
+        if (msg && msg.length < 2000) currentChannel.send(msg)
+    })
 })
 
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-
-    const command = client.commands.get(interaction.commandName);
-
-    if (!command) return;
-
-    try {
-        if (client.userState.has(interaction.user.id)) return await interaction.reply({ content: "You're in the middle of a command!", ephemeral: true })
-        client.userState.set(interaction.user.id, command)
-        await command.execute(interaction, mongoData)
-        client.userState.delete(interaction.user.id)
-    } catch (error) {
-        console.error(error);
-        if (interaction.replied) return await interaction.editReply({ content: 'There was an error while executing this command!', ephemeral: true });
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-        if (client.userState.has(interaction.user.id)) client.userState.delete(interaction.user.id)
-    }
+client.on('messageCreate', async message => {
+    if (message.author.bot) return
+    sound.play('D:\\Projects\\discord\\message.wav', 1)    
+    console.log(`\n${message.author.username} > ${message.content}`)
 })
-
-const rest = new REST({ version: '9' }).setToken(botconfig.token);
-(async () => {
-    try {
-        console.log('Started refreshing application (/) commands.');
-
-        await rest.put(
-            Routes.applicationCommands(botconfig.botID), //comment out guildID to deploy to all guilds
-            { body: slashCommands },
-        );
-        console.log('Successfully reloaded application (/) commands.');
-    } catch (error) {
-        console.error(error);
-    }
-})();
 
 client.login(botconfig.token)

@@ -1,9 +1,6 @@
 {
     "token": "",
-    "botID": "",
-    "roles": {
-        "owner": "",
-        "admin": "",
-        "moderator": ""
-    }
+    "ownerID": "",
+    "guildId": "",
+    "channelId": ""
 }
