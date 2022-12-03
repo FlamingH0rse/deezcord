@@ -73,10 +73,11 @@ html,
 
 /* servers list */
 .serverslist{
-    background-color: brown;
+    background-color: #202225;
     flex-grow: 0;
     flex-shrink: 0;
-    width: 30px;
+    width: 72px;
+    padding-top: 4px;
 }
 
 /* main part */
@@ -91,10 +92,23 @@ html,
 /* top part of main */
 .tpart{
     background-color: crimson;
-    height: 50px;
+    height: 48px;
     display: flex;
     flex-shrink: 0;
     flex-grow: 0;
+    filter: drop-shadow(0 1px rgba(32, 34, 37, 0.5))
+}
+.channeltop{
+    background-color: #2F3136;
+    width: 240px;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.middletop {
+    background-color: #36393F;
+    flex-grow: 1;
+    flex-shrink: 1
 }
 
 /* bottom part of main */ 
@@ -107,23 +121,62 @@ html,
 
 /* channels */
 .channels{
-    background-color: bisque;
-    width: 100px;
+    background-color: #2F3136;
+    width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
 }
-
+.status {
+    background-color: #292B2F;
+    height: 68px;
+    filter: drop-shadow(0 1px #36393F)
+}
+.profile {
+    background-color: #292B2F;
+    height: 68px
+}
 /* msgpart */
 .msgpart{
-    background-color: red;
+    background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
 }
+.msgcontainer {
+    background-color: #36393F;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.msgcontainer::-webkit-scrollbar {
+    width: 15px;
+}
 
+.msgcontainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px 10px #2E3338;
+    border: solid 4px transparent;
+    border-radius: 10px;
+}
+
+.msgcontainer::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px #202225;
+    border: solid 4px transparent;
+    border-radius: 10px;
+}
+
+.inputsection {
+    background-color: #36393F;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 68px;
+}
+.inputbox {
+    background-color: #40444B;
+    height: 44px;
+    border-radius: 8px;
+}
 /* memberslist */
 .memberslist{
-    background-color: blue;
-    width: 100px;
+    background-color: #2F3136;
+    width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
 }
