@@ -13,8 +13,8 @@ html,
 /* titlebar */
 
 .titlebar {
-    background-color: #252220;
-    height: 30px;
+    background-color: #202225;
+    height: 20px;
     -webkit-app-region: drag;
     -webkit-user-select: none;
     user-select: none;
@@ -28,7 +28,7 @@ html,
 #close {
     -webkit-app-region: no-drag;
     height: 20px;
-    width: 40px;
+    width: 30px;
     border: none;
     background: none;
     color: #9A9795;
@@ -62,7 +62,7 @@ html,
     flex-direction: column;
     height: 100%;
     width: 5%;
-    background-color: #252220;
+    background-color: #202225;
 }
 
 .channelslist {
@@ -70,18 +70,18 @@ html,
     flex-direction: column;
     width: 15%;
     height: 100%;
-    background-color: #36312F;
+    background-color: #2F3136;
 }
 
 .mainpart {
     width: 65%;
     height: 100%;
-    background-color: #3F3936;
+    background-color: #36393F;
 }
 .userslist {
     display: flex;
     flex-direction: column;
     width: 15%;
     height: 100%;
-    background-color: #36312F;
+    background-color: #2F3136;
 }
