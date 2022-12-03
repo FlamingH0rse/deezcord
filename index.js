@@ -19,8 +19,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(async () => {
-    createLoadingWindow()
-
+    createWindow()
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
