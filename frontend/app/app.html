@@ -11,33 +11,20 @@
 </head>
 
 <body>
-    <header class="titlebar">
-        <button id="close">X</button>
-        <button id="maximize">☐</button>
-        <button id="minimize">—</button>
-    </header>
-    <div class="parent">
-        <div class="leftside">
-            <div class="serverslist">
-
-            </div>
-        </div>
-        <div class="rightside">
-            <div class="toppanel">
-
-            </div>
-            <div class="bottom">
-                <div class="channelslist">
-
-                </div>
-                <div class="mainpart">
-                    <div class="msgcontainer"></div>
-                    <div class="inputsection">
-                        <input id="inputbox" type="text" placeholder="Message" size="26px">
-                    </div>
-                </div>
-                <div class="userslist">
-        
+    <div class="wrapper">
+        <header class="titlebar">
+            <button id="close">X</button>
+            <button id="maximize">☐</button>
+            <button id="minimize">—</button>
+        </header>
+        <div class="actualbody">
+            <div class="serverslist"></div>
+            <div class="mainpart">
+                <div class="tpart"></div>
+                <div class="bpart">
+                    <div class="channels"></div>
+                    <div class="msgpart"></div>
+                    <div class="memberslist"></div>
                 </div>
             </div>
         </div>

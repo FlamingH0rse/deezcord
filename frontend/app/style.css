@@ -10,6 +10,15 @@ html,
     padding: 0;
 }
 
+/* wrapper */
+
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 /* titlebar */
 
 .titlebar {
@@ -21,6 +30,9 @@ html,
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 #minimize,
@@ -50,60 +62,68 @@ html,
     outline: none
 }
 
-.parent {
-    width: 100%;
-    height: 100%;
+/* ok */ 
+
+.actualbody{
+    display: flex;
+
     flex-grow: 1;
-    display: flex;
-}
-.leftside {
-    height: 100%;
-    width: 5%;
-}
-.serverslist {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    background-color: #202225;
+    flex-shrink: 1;
 }
 
-.rightside {
-    width: 95%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+/* servers list */
+.serverslist{
+    background-color: brown;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 30px;
 }
 
-.toppanel {
-    width: 100%;
-    height: 6%;
+/* main part */
+.mainpart{
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* top part of main */
+.tpart{
+    background-color: crimson;
+    height: 50px;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+/* bottom part of main */ 
+.bpart {
+    background-color: beige;
+    display: flex;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+/* channels */
+.channels{
+    background-color: bisque;
+    width: 100px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+/* msgpart */
+.msgpart{
+    background-color: red;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* memberslist */
+.memberslist{
     background-color: blue;
-}
-.bottom {
-    display:flex;
-    flex-direction: row;
-    width: 100%;
-    height: 94%;
-}
-.channelslist {
-    display: flex;
-    flex-direction: column;
-    width: 16.5%;
-    height: 100%;
-    background-color: #2F3136;
-}
-
-.mainpart {
-    width: 68%;
-    height: 100%;
-    background-color: #36393F;
-}
-
-.userslist {
-    display: flex;
-    flex-direction: column;
-    width: 15.5%;
-    height: 100%;
-    background-color: #2F3136;
+    width: 100px;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
