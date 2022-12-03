@@ -12,7 +12,7 @@ html,
 
 /* wrapper */
 
-.wrapper{
+.wrapper {
     height: 100%;
     width: 100%;
     display: flex;
@@ -62,9 +62,9 @@ html,
     outline: none
 }
 
-/* ok */ 
+/* ok */
 
-.actualbody{
+.actualbody {
     display: flex;
 
     flex-grow: 1;
@@ -72,16 +72,39 @@ html,
 }
 
 /* servers list */
-.serverslist{
+.serverslist {
     background-color: #202225;
     flex-grow: 0;
     flex-shrink: 0;
     width: 72px;
     padding-top: 4px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.guild {
+    height: 48px;
+    margin-bottom: 8px;
+}
+.guildIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+.guildIcon:hover {
+    animation: guildHover 0.25s forwards;
+}
+
+@keyframes guildHover {
+    100% {
+        border-radius: 25%;
+    }
 }
 
 /* main part */
-.mainpart{
+.mainpart {
     display: flex;
     flex-direction: column;
 
@@ -90,7 +113,7 @@ html,
 }
 
 /* top part of main */
-.tpart{
+.tpart {
     background-color: crimson;
     height: 48px;
     display: flex;
@@ -98,20 +121,22 @@ html,
     flex-grow: 0;
     filter: drop-shadow(0 1px rgba(32, 34, 37, 0.5))
 }
-.channeltop{
+
+.channeltop {
     background-color: #2F3136;
     width: 240px;
     display: flex;
     flex-shrink: 0;
     flex-grow: 0;
 }
+
 .middletop {
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1
 }
 
-/* bottom part of main */ 
+/* bottom part of main */
 .bpart {
     background-color: beige;
     display: flex;
@@ -120,32 +145,37 @@ html,
 }
 
 /* channels */
-.channels{
+.channels {
     background-color: #2F3136;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
 }
+
 .status {
     background-color: #292B2F;
     height: 68px;
     filter: drop-shadow(0 1px #36393F)
 }
+
 .profile {
     background-color: #292B2F;
     height: 68px
 }
+
 /* msgpart */
-.msgpart{
+.msgpart {
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
 }
+
 .msgcontainer {
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
 }
+
 /*
 .msgcontainer::-webkit-scrollbar {
     width: 15px;
@@ -169,13 +199,15 @@ html,
     padding-right: 16px;
     height: 68px;
 }
+
 .inputbox {
     background-color: #40444B;
     height: 44px;
     border-radius: 8px;
 }
+
 /* memberslist */
-.memberslist{
+.memberslist {
     background-color: #2F3136;
     width: 240px;
     flex-shrink: 0;
