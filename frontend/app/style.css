@@ -56,32 +56,54 @@ html,
     flex-grow: 1;
     display: flex;
 }
-
+.leftside {
+    height: 100%;
+    width: 5%;
+}
 .serverslist {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 5%;
+    width: 100%;
     background-color: #202225;
 }
 
+.rightside {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.toppanel {
+    width: 100%;
+    height: 6%;
+    background-color: blue;
+}
+.bottom {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height: 94%;
+}
 .channelslist {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 16.5%;
     height: 100%;
     background-color: #2F3136;
 }
 
 .mainpart {
-    width: 65%;
+    width: 68%;
     height: 100%;
     background-color: #36393F;
 }
+
 .userslist {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 15.5%;
     height: 100%;
     background-color: #2F3136;
 }
