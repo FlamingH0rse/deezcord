@@ -15,7 +15,7 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js')
         }
     })
-    mainWindow.loadFile('./frontend/index.html')
+    mainWindow.loadFile('./frontend/app/app.html')
 }
 
 app.whenReady().then(async () => {

@@ -13,9 +13,8 @@ html,
 /* titlebar */
 
 .titlebar {
-    background-color: #141D29;
+    background-color: #252220;
     height: 30px;
-    border-bottom: 1px solid #11171E;
     -webkit-app-region: drag;
     -webkit-user-select: none;
     user-select: none;
@@ -32,7 +31,7 @@ html,
     width: 40px;
     border: none;
     background: none;
-    color: white;
+    color: #9A9795;
     cursor: pointer;
 }
 

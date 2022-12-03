@@ -1,0 +1,70 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html,
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* titlebar */
+
+.titlebar {
+    background-color: #252220;
+    height: 30px;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#minimize,
+#maximize,
+#close {
+    -webkit-app-region: no-drag;
+    height: 20px;
+    width: 40px;
+    border: none;
+    background: none;
+    color: #9A9795;
+    cursor: pointer;
+}
+
+#minimize:hover,
+#maximize:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+#close:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 0, 0, 0.9);
+}
+
+#minimize:focus,
+#maximize:focus,
+#close:focus {
+    outline: none
+}
+
+.parent {
+    flex-grow: 1;
+    display: flex;
+}
+
+.serverslist {
+    width: 5%;
+    height: 100%;
+    background-color: #252220;
+}
+
+.channelslist {
+    background-color: #36312F;
+}
+
+.mainpart {
+    background-color: #3F3936;
+}
