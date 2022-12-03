@@ -47,11 +47,20 @@ app.whenReady().then(async () => {
         console.log(d)
         if (d.title == 'initInfo') {
             let res = {}
+            res.user = [client.user.tag, client.user.displayAvatarURL()]
             res.guilds = client.guilds.cache.map(g => [g.name, g.id, g.iconURL()])
             if (savedcache.lastGuild.type == 'GUILD' && client.guilds.cache.get(savedcache.lastGuild.id)) {
                 res.currentGuild = client.guilds.cache.get(savedcache.lastGuild.id)
             }
             return res
+        }
+        if (d.title == 'navGuild') {
+            if (d.type == 'GUILD' && client.guilds.cache.get(d.id)) {
+                return { title: 'navGuildSuccess', d: {
+                    channels: client.guilds.cache.get(d.id).channels.cache,
+                    users: client.guilds.cache.get(d.id).members.cache
+                }}
+            }
         }
         //client related stuff
         if (d.title == 'minimizeWin') mainWindow.minimize()

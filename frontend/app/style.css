@@ -88,11 +88,13 @@ html,
     height: 48px;
     margin-bottom: 8px;
 }
+
 .guildIcon {
     width: 48px;
     height: 48px;
     border-radius: 50%;
 }
+
 .guildIcon:hover {
     animation: guildHover 0.25s forwards;
 }
@@ -152,15 +154,60 @@ html,
     flex-grow: 0;
 }
 
+.channelslist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.channel {
+    color: #7B7F85;
+    background-color: #2F3136;
+    width: 224px;
+    height: 34px;
+    border-radius: 4px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.channelName {
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 6px;
+    width: 142px;
+}
+
+.channel:hover {
+    background-color: #42464D;
+}
+
 .status {
     background-color: #292B2F;
     height: 68px;
-    filter: drop-shadow(0 1px #36393F)
+    filter: drop-shadow(0 1px #36393F);
 }
 
 .profile {
+    color: white;
     background-color: #292B2F;
-    height: 68px
+    height: 68px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.botIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.botName {
+    font-size: 14px;
 }
 
 /* msgpart */
