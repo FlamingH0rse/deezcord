@@ -51,20 +51,31 @@ html,
 }
 
 .parent {
+    width: 100%;
+    height: 100%;
     flex-grow: 1;
     display: flex;
 }
 
 .serverslist {
-    width: 5%;
     height: 100%;
+    width: 5%;
     background-color: #252220;
 }
 
 .channelslist {
+    width: 15%;
+    height: 100%;
     background-color: #36312F;
 }
 
 .mainpart {
+    width: 65%;
+    height: 100%;
     background-color: #3F3936;
+}
+.userslist {
+    width: 15%;
+    height: 100%;
+    background-color: #36312F;
 }
