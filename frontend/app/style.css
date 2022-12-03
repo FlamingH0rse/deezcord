@@ -146,6 +146,7 @@ html,
     flex-grow: 1;
     flex-shrink: 1;
 }
+/*
 .msgcontainer::-webkit-scrollbar {
     width: 15px;
 }
@@ -161,7 +162,7 @@ html,
     border: solid 4px transparent;
     border-radius: 10px;
 }
-
+*/
 .inputsection {
     background-color: #36393F;
     padding-left: 16px;
