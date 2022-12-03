@@ -58,12 +58,16 @@ html,
 }
 
 .serverslist {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 5%;
     background-color: #252220;
 }
 
 .channelslist {
+    display: flex;
+    flex-direction: column;
     width: 15%;
     height: 100%;
     background-color: #36312F;
@@ -75,6 +79,8 @@ html,
     background-color: #3F3936;
 }
 .userslist {
+    display: flex;
+    flex-direction: column;
     width: 15%;
     height: 100%;
     background-color: #36312F;
