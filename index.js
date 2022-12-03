@@ -20,6 +20,23 @@ const createWindow = () => {
 
 app.whenReady().then(async () => {
     createWindow()
+
+    ipcMain.handle('backend', (event, d) => {
+        //client related stuff
+        if (d.title == 'minimizeWin') mainWindow.minimize()
+        else if (d.title == 'maximizeWin') {
+            // ❐ Maximized ☐ Normal
+            if (mainWindow.isMaximized()) {
+                mainWindow.unmaximize();
+                return { title: 'unMaximized' }
+            } else {
+                mainWindow.maximize();
+                return { title: 'maximized' }
+            }
+        }
+        else if (d.title == 'closeWin') mainWindow.close()
+    })
+
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
