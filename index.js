@@ -5,7 +5,7 @@ let mainWindow
 
 const createWindow = () => {
     mainWindow = new BrowserWindow({
-        backgroundColor: '#212A47',
+        backgroundColor: '#202225',
         width: 1000,
         height: 600,
         minWidth: 800,
