@@ -1,0 +1,52 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html,
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* titlebar */
+
+.titlebar {
+    background-color: #141D29;
+    height: 30px;
+    border-bottom: 1px solid #11171E;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#minimize,
+#maximize,
+#close {
+    -webkit-app-region: no-drag;
+    height: 30px;
+    width: 40px;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+#minimize:hover,
+#maximize:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+#close:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 0, 0, 0.9);
+}
+
+#minimize:focus,
+#maximize:focus,
+#close:focus {
+    outline: none
+}
