@@ -11,5 +11,8 @@
   "dependencies": {
     "discord.js": "^14.6.0",
     "sound-play": "^1.1.0"
+  },
+  "devDependencies": {
+    "electron": "^22.0.0"
   }
 }
