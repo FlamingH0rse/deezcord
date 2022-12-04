@@ -121,13 +121,17 @@ html,
     display: flex;
     flex-shrink: 0;
     flex-grow: 0;
-    filter: drop-shadow(0 1px rgba(32, 34, 37, 0.5))
+    filter: drop-shadow(0 2px rgba(32, 34, 37, 0.3))
 }
 
 .channeltop {
+    color: white;
+    font-family: Uni-Sans-SemiBold;
     background-color: #282b30;
-    width: 240px;
+    width: 224px;
+    padding-left: 16px;
     display: flex;
+    align-items: center;
     flex-shrink: 0;
     flex-grow: 0;
 }
@@ -166,7 +170,6 @@ html,
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 1px;
     
     overflow-y: scroll;
 }
@@ -232,10 +235,11 @@ html,
 }
 
 .status {
-    background-color: #292B2F;
-    height: 68px;
+    background-color: #232427;
+    height: 52px;
     filter: drop-shadow(0 1px #36393F);
-
+    
+    display:flex;
     flex-grow: 0;
     flex-shrink: 0;
 }

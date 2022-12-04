@@ -48,7 +48,7 @@ function renderGuild(g) {
     runOnceRefreshHtmlElements()
     newGuild.children[0].addEventListener('click', async e => {
         let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g[1] })
-        console.log(guildInfo)
+        html.channeltop.textContent = g[0]
         guildInfo.d.channels.forEach(c => {renderChannel([c[1].type, c[1].name, c[1].id]) })
     })
 }
