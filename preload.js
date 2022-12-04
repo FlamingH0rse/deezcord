@@ -26,7 +26,7 @@ function renderChannel(c) {
         newChannel.classList.add('channel')
         newChannel.innerHTML =
             `<img class="channelIcon" src="../assets/channel.svg">
-    <p class="channelName" id="${c[2]}">${c[1]}</p>`
+            <p class="channelName" id="${c[2]}">${c[1]}</p>`
         html.channelslist.append(newChannel)
     } if (c[0] == 4) {
         let newCategory = document.createElement('div')
@@ -43,7 +43,7 @@ function renderGuild(g) {
     newGuild.classList.add('guild')
     newGuild.innerHTML =
         `<img class="guildIcon" src="${g[2]}"></img>
-    <div class="guildName" style="display: none;">${g[0]}</div>`
+        <div class="guildName" style="display: none;">${g[0]}</div>`
     html.serverslist.append(newGuild)
     runOnceRefreshHtmlElements()
     newGuild.children[0].addEventListener('click', async e => {
@@ -61,7 +61,7 @@ window.addEventListener('load', async () => {
         let initInfo = await toBackend({ title: 'initInfo' })
         html.profile.innerHTML =
             `<img class="botIcon" src="${initInfo.user[1]}"></img>
-        <div class="botName">${initInfo.user[0]}</div>`
+            <div class="botName">${initInfo.user[0]}</div>`
         for (let g in initInfo.guilds) {
             renderGuild(initInfo.guilds[g])
         }
