@@ -164,7 +164,22 @@ html,
     flex-direction: column;
     align-items: center;
     height: 1px;
+    
+    overflow-y: hidden;
+}
+
+.channelslist:hover{
     overflow-y: scroll;
+}
+
+.channelslist::-webkit-scrollbar{
+    position: fixed;
+    width: 5px;
+}
+
+.channelslist::-webkit-scrollbar-thumb{
+    background-color: white;
+    position: fixed;
 }
 
 /* the actual channel itself */
