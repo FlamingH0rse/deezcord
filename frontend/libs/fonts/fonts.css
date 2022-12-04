@@ -11,9 +11,11 @@
 @font-face {
     font-family: Uni-Sans-Thin-Italic;
     src: url("uni-sans/Uni\ Sans\ Thin\ Italic.otf");
+    font-style: italic;
 }
 
 @font-face {
     font-family: Uni-Sans-Heavy-Italic;
     src: url("uni-sans/Uni\ Sans\ Heavy\ Italic.otf");
+    font-style: italic;
 }
