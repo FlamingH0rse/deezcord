@@ -32,7 +32,7 @@ function renderChannel(c) {
         let newCategory = document.createElement('div')
         newCategory.classList.add('category')
         newCategory.innerHTML = 
-        `<p class="categoryName" id="${c[2]}">${c[1]}</p>`
+        `<p class="categoryName" id="${c[2]}">${c[1].toUpperCase()}</p>`
         html.channelslist.append(newCategory)
     }
     runOnceRefreshHtmlElements()
