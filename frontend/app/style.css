@@ -23,7 +23,7 @@ html,
 
 .titlebar {
     background-color: #202225;
-    height: 20px;
+    height: 22px;
     -webkit-app-region: drag;
     -webkit-user-select: none;
     user-select: none;
@@ -39,8 +39,8 @@ html,
 #maximize,
 #close {
     -webkit-app-region: no-drag;
-    height: 20px;
-    width: 30px;
+    height: 22px;
+    width: 28px;
     border: none;
     background: none;
     color: #9A9795;
@@ -152,13 +152,20 @@ html,
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .channelslist {
+    flex-grow: 1;
+    flex-shrink: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+/* the actual channel itself */
 
 .channel {
     color: #7B7F85;
@@ -183,19 +190,29 @@ html,
     background-color: #42464D;
 }
 
+/* status the one that shows when ur playing smth */
+
 .status {
     background-color: #292B2F;
     height: 68px;
     filter: drop-shadow(0 1px #36393F);
+
+    flex-grow: 0;
+    flex-shrink: 0;
 }
+
+/* ur profile (bottom part of channels) */
 
 .profile {
     color: white;
     background-color: #292B2F;
-    height: 68px;
+    height: 52px;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .botIcon {
@@ -215,6 +232,9 @@ html,
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
+    
+    display: flex;
+    flex-direction: column;
 }
 
 .msgcontainer {
@@ -240,17 +260,31 @@ html,
     border-radius: 10px;
 }
 */
+
+/* where u can type messages */
+
 .inputsection {
-    background-color: #36393F;
+    display: flex;
+    
     padding-left: 16px;
     padding-right: 16px;
     height: 68px;
 }
 
-.inputbox {
-    background-color: #40444B;
+#attachfile{
+    background-color: #48444c;
     height: 44px;
-    border-radius: 8px;
+    width: 56px;
+    border: none;
+
+    cursor: pointer;
+}
+
+#inputbox {
+    background-color: #48444c;
+    height: 44px;
+    outline: none;
+    border: none;
 }
 
 /* memberslist */
