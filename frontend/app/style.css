@@ -22,7 +22,7 @@ html,
 /* titlebar */
 
 .titlebar {
-    background-color: #202225;
+    background-color: #1e2124;
     height: 22px;
     -webkit-app-region: drag;
     -webkit-user-select: none;
@@ -73,7 +73,7 @@ html,
 
 /* servers list */
 .serverslist {
-    background-color: #202225;
+    background-color: #1e2124;
     flex-grow: 0;
     flex-shrink: 0;
     width: 72px;
@@ -125,7 +125,7 @@ html,
 }
 
 .channeltop {
-    background-color: #2F3136;
+    background-color: #282b30;
     width: 240px;
     display: flex;
     flex-shrink: 0;
@@ -133,7 +133,7 @@ html,
 }
 
 .middletop {
-    background-color: #36393F;
+    background-color: #36393e;
     flex-grow: 1;
     flex-shrink: 1
 }
@@ -148,7 +148,7 @@ html,
 
 /* channels */
 .channels {
-    background-color: #2F3136;
+    background-color: #282b30;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
@@ -171,7 +171,6 @@ html,
 
 .channel {
     color: #7B7F85;
-    background-color: #2F3136;
     width: 224px;
     height: 34px;
     border-radius: 4px;
@@ -248,7 +247,7 @@ html,
 
 /* msgpart */
 .msgpart {
-    background-color: #36393F;
+    background-color: #36393e;
     flex-grow: 1;
     flex-shrink: 1;
     
@@ -257,7 +256,7 @@ html,
 }
 
 .msgcontainer {
-    background-color: #36393F;
+    background-color: #36393e;
     flex-grow: 1;
     flex-shrink: 1;
 }
@@ -291,7 +290,7 @@ html,
 }
 
 #attachfile{
-    background-color: #48444c;
+    background-color: #424549;
     height: 44px;
     width: 56px;
     border: none;
@@ -300,7 +299,7 @@ html,
 }
 
 #inputbox {
-    background-color: #48444c;
+    background-color: #424549;
     height: 44px;
     outline: none;
     border: none;
@@ -308,7 +307,7 @@ html,
 
 /* memberslist */
 .memberslist {
-    background-color: #2F3136;
+    background-color: #282b30;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
