@@ -163,6 +163,8 @@ html,
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 1px;
+    overflow-y: scroll;
 }
 
 /* the actual channel itself */
