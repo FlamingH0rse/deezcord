@@ -1,21 +1,34 @@
 @font-face {
     font-family: Uni-Sans-Heavy;
-    src: url("./uni-sans/Uni\ Sans\ Heavy.otf");
+    src: url("./TTF/UniSans-Trial-Heavy.ttf");
+}
+
+@font-face {
+    font-family: Uni-Sans-Regular;
+    src: url("./TTF/UniSans-Trial-Regular.ttf");
+}
+
+@font-face {
+    font-family: Uni-Sans-Book;
+    src: url("TTF/UniSans-Trial-Book.ttf");
 }
 
 @font-face {
     font-family: Uni-Sans-Thin;
-    src: url("./uni-sans/Uni\ Sans\ Thin.otf");
+    src: url("TTF/UniSans-Trial-Thin.ttf");
 }
 
 @font-face {
-    font-family: Uni-Sans-Thin-Italic;
-    src: url("uni-sans/Uni\ Sans\ Thin\ Italic.otf");
-    font-style: italic;
+    font-family: Uni-Sans-SemiBold;
+    src: url("TTF/UniSans-Trial-SemiBold.ttf");
 }
 
 @font-face {
-    font-family: Uni-Sans-Heavy-Italic;
-    src: url("uni-sans/Uni\ Sans\ Heavy\ Italic.otf");
-    font-style: italic;
+    font-family: Uni-Sans-Bold;
+    src: url("TTF/UniSans-Trial-Bold.ttf");
+}
+
+@font-face {
+    font-family: Uni-Sans-Light;
+    src: url("TTF/UniSans-Trial-Light.ttf");
 }

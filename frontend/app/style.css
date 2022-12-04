@@ -152,7 +152,7 @@ html,
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
-
+    font-family: Uni-Sans-Regular;
     display: flex;
     flex-direction: column;
 }
@@ -204,10 +204,11 @@ html,
     align-items: center;
 }
 .categoryName {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 16px;
     width: 216px;
     margin-left: 16px;
+    font-family: Uni-Sans-Bold;
 }
 .category:hover {
     color: white;
@@ -306,6 +307,8 @@ html,
     height: 44px;
     outline: none;
     border: none;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 /* memberslist */
