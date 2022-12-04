@@ -187,10 +187,9 @@ html,
 }
 
 .channel:hover {
+    color: white;
     background-color: #42464D;
 }
-
-/* status the one that shows when ur playing smth */
 
 .status {
     background-color: #292B2F;
