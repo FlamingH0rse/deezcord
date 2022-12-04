@@ -179,6 +179,8 @@ html,
     display: flex;
     align-items: center;
     justify-content: center;
+
+    user-select: none;
 }
 
 .channelName {
@@ -194,6 +196,7 @@ html,
 }
 
 .category {
+    user-select: none;
     color: #7B7F85;
     width: 232px;
     height: 24px;
