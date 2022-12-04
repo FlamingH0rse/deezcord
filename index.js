@@ -62,13 +62,11 @@ app.whenReady().then(async () => {
                 let catChannels = channels.filter(c => c.type == 0 && c.parentId != null).sort((a,b) => a.rawPosition - b.rawPosition)
                 let sortedCh = []
                 sortedCh = sortedCh.concat(Array.from(noCatChannels))
-                console.log(sortedCh)
                 categories.forEach((cat, key) => {
                     sortedCh.push([key, cat])
                     let currentCh = catChannels.filter(c => c.parentId == cat.id)
                     sortedCh = sortedCh.concat(Array.from(currentCh))
                 })
-                console.log(sortedCh)
                 return { title: 'navGuildSuccess', d: {
                     channels: sortedCh,
                     users: 0 //client.guilds.cache.get(d.id).members.cache.array()
