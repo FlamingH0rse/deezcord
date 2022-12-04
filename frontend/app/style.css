@@ -164,7 +164,16 @@ html,
     flex-direction: column;
     align-items: center;
     height: 1px;
+    
     overflow-y: scroll;
+}
+
+.channelslist::-webkit-scrollbar{
+    width: 5px;
+}
+
+.channelslist::-webkit-scrollbar-thumb{
+    background: whitesmoke;
 }
 
 /* the actual channel itself */
