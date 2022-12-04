@@ -28,6 +28,12 @@ function renderChannel(c) {
             `<img class="channelIcon" src="../assets/channel.svg">
     <p class="channelName" id="${c[2]}">${c[1]}</p>`
         html.channelslist.append(newChannel)
+    } if (c[0] == 4) {
+        let newCategory = document.createElement('div')
+        newCategory.classList.add('category')
+        newCategory.innerHTML = 
+        `<p class="categoryName" id="${c[2]}">${c[1]}</p>`
+        html.channelslist.append(newCategory)
     }
     runOnceRefreshHtmlElements()
 }
@@ -43,7 +49,7 @@ function renderGuild(g) {
     newGuild.children[0].addEventListener('click', async e => {
         let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g[1] })
         console.log(guildInfo)
-        guildInfo.d.channels.forEach(c => renderChannel([c.type, c.name, c.id]))
+        guildInfo.d.channels.forEach(c => {renderChannel([c[1].type, c[1].name, c[1].id]) })
     })
 }
 ipcRenderer.on('frontend', (event, d) => {
