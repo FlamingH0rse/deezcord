@@ -116,7 +116,7 @@ html,
 
 /* top part of main */
 .tpart {
-    background-color: crimson;
+    background-color: white;
     height: 48px;
     display: flex;
     flex-shrink: 0;
@@ -130,6 +130,9 @@ html,
     display: flex;
     flex-shrink: 0;
     flex-grow: 0;
+}
+.channeltop:hover {
+    opacity: 0.97
 }
 
 .middletop {
@@ -236,7 +239,7 @@ html,
 
 .profile {
     color: white;
-    background-color: #292B2F;
+    background-color: #232427;
     height: 52px;
     display: flex;
     flex-direction: row;
@@ -263,40 +266,21 @@ html,
     background-color: #36393e;
     flex-grow: 1;
     flex-shrink: 1;
-    
     display: flex;
     flex-direction: column;
 }
 
 .msgcontainer {
+    font-family: Uni-Sans-Regular;
     background-color: #36393e;
     flex-grow: 1;
     flex-shrink: 1;
 }
 
-/*
-.msgcontainer::-webkit-scrollbar {
-    width: 15px;
-}
-
-.msgcontainer::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 10px 10px #2E3338;
-    border: solid 4px transparent;
-    border-radius: 10px;
-}
-
-.msgcontainer::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 10px 10px #202225;
-    border: solid 4px transparent;
-    border-radius: 10px;
-}
-*/
-
 /* where u can type messages */
 
 .inputsection {
     display: flex;
-    
     padding-left: 16px;
     padding-right: 16px;
     height: 68px;
@@ -312,6 +296,8 @@ html,
 }
 
 #inputbox {
+    font-family: Uni-Sans-Regular;
+    color: white;
     background-color: #424549;
     height: 44px;
     outline: none;
