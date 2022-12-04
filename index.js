@@ -17,7 +17,7 @@ const createWindow = () => {
         backgroundColor: '#202225',
         width: 1000,
         height: 600,
-        minWidth: 800,
+        minWidth: 900,
         minHeight: 600,
         titleBarStyle: 'hidden',
         fullscreenable: false,
