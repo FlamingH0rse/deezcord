@@ -73,7 +73,7 @@ html,
 
 /* servers list */
 .serverslist {
-    background-color: #1e2124;
+    background-color: #202225;
     flex-grow: 0;
     flex-shrink: 0;
     width: 72px;
@@ -127,7 +127,7 @@ html,
 .channeltop {
     color: white;
     font-family: Uni-Sans-SemiBold;
-    background-color: #282b30;
+    background-color: #2F3136;
     width: 224px;
     padding-left: 16px;
     display: flex;
@@ -135,12 +135,13 @@ html,
     flex-shrink: 0;
     flex-grow: 0;
 }
+
 .channeltop:hover {
     opacity: 0.97
 }
 
 .middletop {
-    background-color: #36393e;
+    background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1
 }
@@ -155,7 +156,7 @@ html,
 
 /* channels */
 .channels {
-    background-color: #282b30;
+    background-color: #2F3136;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
@@ -170,19 +171,19 @@ html,
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     overflow-y: scroll;
 }
 
-.channelslist:hover::-webkit-scrollbar-thumb{
+.channelslist:hover::-webkit-scrollbar-thumb {
     background: whitesmoke;
 }
 
-.channelslist::-webkit-scrollbar{
+.channelslist::-webkit-scrollbar {
     width: 5px;
 }
 
-.channelslist::-webkit-scrollbar-thumb{
+.channelslist::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: transparent;
 }
@@ -190,7 +191,7 @@ html,
 /* the actual channel itself */
 
 .channel {
-    color: #7B7F85;
+    color: #96989D;
     width: 224px;
     height: 34px;
     border-radius: 4px;
@@ -223,6 +224,7 @@ html,
     display: flex;
     align-items: center;
 }
+
 .categoryName {
     font-size: 12px;
     line-height: 16px;
@@ -230,16 +232,17 @@ html,
     margin-left: 16px;
     font-family: Uni-Sans-Bold;
 }
+
 .category:hover {
     color: white;
 }
 
 .status {
-    background-color: #232427;
+    background-color: #292B2F;
     height: 52px;
     filter: drop-shadow(0 1px #36393F);
-    
-    display:flex;
+
+    display: flex;
     flex-grow: 0;
     flex-shrink: 0;
 }
@@ -248,7 +251,7 @@ html,
 
 .profile {
     color: white;
-    background-color: #232427;
+    background-color: #292B2F;
     height: 52px;
     display: flex;
     flex-direction: row;
@@ -281,7 +284,7 @@ html,
 
 .msgcontainer {
     font-family: Uni-Sans-Regular;
-    background-color: #36393e;
+    background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
 }
@@ -295,7 +298,7 @@ html,
     height: 68px;
 }
 
-#attachfile{
+#attachfile {
     background-color: #424549;
     height: 44px;
     width: 56px;
@@ -317,7 +320,7 @@ html,
 
 /* memberslist */
 .memberslist {
-    background-color: #282b30;
+    background-color: #2F3136;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
