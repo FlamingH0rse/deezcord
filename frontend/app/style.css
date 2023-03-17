@@ -173,6 +173,7 @@ html,
     align-items: center;
 
     overflow-y: scroll;
+    height: 1px;
 }
 
 .channelslist:hover::-webkit-scrollbar-thumb {
