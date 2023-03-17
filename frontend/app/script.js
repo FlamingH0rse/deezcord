@@ -1,3 +1,3 @@
 $(() => {
-    //$('.status').hide()
+    $('.status').hide()
 })

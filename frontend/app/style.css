@@ -62,8 +62,17 @@ html,
     outline: none
 }
 
-/* ok */
+#middleman {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
 
+#deez {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* ok */
 .actualbody {
     display: flex;
 
@@ -84,12 +93,35 @@ html,
     align-items: center;
 }
 
+.discordlogo {
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    width: 48px;
+    height: 48px;
+
+    background-color: #313338;
+}
+
+.guildseparator {
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    width: 32px;
+    height: 2px;
+
+    border-radius: 1px;
+    background-color: #4E50587A;
+}
+
 .guild {
     height: 48px;
     margin-bottom: 8px;
 }
 
 .guildIcon {
+    cursor: pointer;
+
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -192,6 +224,7 @@ html,
 /* the actual channel itself */
 
 .channel {
+    cursor: pointer;
     flex-shrink: 0;
 
     color: #96989D;
