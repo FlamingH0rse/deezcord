@@ -1,6 +1,6 @@
 const { ipcRenderer } = require('electron')
 const path = require('path')
-let { renderChannelList, renderGuild } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'renderer.js'))
+let { renderChannelList, renderGuild, renderMessage } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'renderer.js'))
 let { toBackend } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'electronipc.js'))
 
 let html = {}
@@ -24,6 +24,8 @@ function runOnceRefreshHtmlElements() {
 
 ipcRenderer.on('frontend', (event, d) => {
     console.log(d)
+    runOnceRefreshHtmlElements()
+    if (d.title == 'navChannelSuccess') d.messages.forEach(m => renderMessage(html, m))
 })
 window.addEventListener('load', async () => {
     runOnceRefreshHtmlElements()

@@ -111,7 +111,7 @@ app.whenReady().then(async () => {
                 res.messages = messages.map(m => {
                     return {
                         id: m.id,
-                        created: m.createdTimestamp,
+                        createdAt: m.createdTimestamp,
                         content: m.content,
                         author: {
                             id: m.author.id,
@@ -121,9 +121,9 @@ app.whenReady().then(async () => {
                         }
                     }
                 })
+                res.title = 'navChannelSuccess'
+                mainWindow.webContents.send('frontend', res)
             })
-            res.title = 'navChannelSuccess'
-            return res
         }
         //client related stuff
         if (d.title == 'minimizeWin') mainWindow.minimize()

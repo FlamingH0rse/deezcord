@@ -7,6 +7,17 @@ let renderUserList = function (html, u) {
         <p class="userName" id="${u.id}">${u.username + '#' + u.tag}</p>`
     html.memberslist.append(newUser)
 }
+let renderMessage = function (html, m) {
+    let newMessage = document.createElement('div')
+    newMessage.classList.add('message')
+    newMessage.innerHTML =
+        `<img class="authorAvatar" src="${m.author.avatar}">` +
+            (m.author.bot ? `<p class="botBadge">BOT</p>` : ``) +
+        `<p class="authorName" id="${m.author.id}">${m.author.username}</p>
+        <p class="timeStamp">${new Date(m.createdAt)}</p>
+        <p class="messagecontent" id="${m.id}">${m.content}</p>`;
+    html.msgcontainer.append(newMessage)
+}
 let renderChannelList = function (html, c, guildID) {
     if (c.type == 0) {
         let newChannel = document.createElement('div')
@@ -16,9 +27,8 @@ let renderChannelList = function (html, c, guildID) {
             <p class="channelName" id="${c.id}">${c.name}</p>`
         html.channelslist.append(newChannel)
         newChannel.addEventListener('click', async e => {
-            let channelInfo = await toBackend({ title: 'navChannel', guildID: guildID, id: c.id })
+            toBackend({ title: 'navChannel', guildID: guildID, id: c.id })
             html.msgcontainer.textContent = ''
-            console.log(channelInfo)
         })
     } if (c.type == 4) {
         let newCategory = document.createElement('div')
@@ -41,10 +51,11 @@ let renderGuild = function (html, g) {
         html.memberslist.innerHTML = ''
         html.channeltop.textContent = g.name
         guildInfo.users.forEach(u => renderUserList(html, u))
-        guildInfo.channels.forEach(c => { renderChannelList(html, c, g.id); })
+        guildInfo.channels.forEach(c => renderChannelList(html, c, g.id))
     })
 }
 module.exports = {
     renderChannelList,
-    renderGuild
+    renderGuild,
+    renderMessage
 }
