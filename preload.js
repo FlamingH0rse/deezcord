@@ -14,7 +14,10 @@ function runOnceRefreshHtmlElements() {
     }
     if (titleBarInit == false) {
         html.minimize.addEventListener('click', () => toBackend({ title: 'minimizeWin' }))
-        html.maximize.addEventListener('click', async () => { let res = await toBackend({ title: 'maximizeWin' }) })
+        html.maximize.addEventListener('click', async () => {
+            let res = await toBackend({ title: 'maximizeWin' })
+            html.maximize.innerHTML = res.title == 'maximized' ? '❐' : '☐'
+        })
         html.close.addEventListener('click', () => toBackend({ title: 'closeWin' }))
         titleBarInit = true
     }
@@ -31,8 +34,8 @@ function renderChannel(c) {
     } if (c[0] == 4) {
         let newCategory = document.createElement('div')
         newCategory.classList.add('category')
-        newCategory.innerHTML = 
-        `<p class="categoryName" id="${c[2]}">${c[1].toUpperCase()}</p>`
+        newCategory.innerHTML =
+            `<p class="categoryName" id="${c[2]}">${c[1].toUpperCase()}</p>`
         html.channelslist.append(newCategory)
     }
     runOnceRefreshHtmlElements()
@@ -48,8 +51,9 @@ function renderGuild(g) {
     runOnceRefreshHtmlElements()
     newGuild.children[0].addEventListener('click', async e => {
         let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g[1] })
+        html.channelslist.innerHTML = ''
         html.channeltop.textContent = g[0]
-        guildInfo.d.channels.forEach(c => {renderChannel([c[1].type, c[1].name, c[1].id]) })
+        guildInfo.d.channels.forEach(c => { renderChannel([c[1].type, c[1].name, c[1].id]) })
     })
 }
 ipcRenderer.on('frontend', (event, d) => {
