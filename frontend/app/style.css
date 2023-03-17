@@ -68,6 +68,9 @@ html,
 }
 
 #deez {
+    color: gainsboro;
+    font-size: 15px;
+
     flex-grow: 0;
     flex-shrink: 0;
 }
@@ -321,14 +324,29 @@ html,
 }
 
 .msgcontainer {
+    height: 1px;
+    overflow-y: scroll;
+
     font-family: Uni-Sans-Regular;
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
 }
 
-/* where u can type messages */
+.msgcontainer:hover::-webkit-scrollbar-thumb {
+    background: whitesmoke;
+}
 
+.msgcontainer::-webkit-scrollbar {
+    width: 5px;
+}
+
+.msgcontainer::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: transparent;
+}
+
+/* where u can type messages */
 .inputsection {
     display: flex;
     padding-left: 16px;
@@ -356,10 +374,38 @@ html,
     flex-shrink: 1;
 }
 
-/* memberslist */
-.memberslist {
+/* rightside */
+
+.rightside {
+    display: flex;
+    flex-direction: column;
+
     background-color: #2F3136;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
+}
+
+/* memberslist */
+.memberslist {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 1px;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.memberslist:hover::-webkit-scrollbar-thumb {
+    background: whitesmoke;
+}
+
+.memberslist::-webkit-scrollbar {
+    width: 5px;
+}
+
+.memberslist::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: transparent;
 }
