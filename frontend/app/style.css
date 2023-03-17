@@ -192,6 +192,8 @@ html,
 /* the actual channel itself */
 
 .channel {
+    flex-shrink: 0;
+
     color: #96989D;
     width: 224px;
     height: 34px;
@@ -217,6 +219,8 @@ html,
 }
 
 .category {
+    flex-shrink: 0;
+
     user-select: none;
     color: #7B7F85;
     width: 232px;
