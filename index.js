@@ -22,7 +22,10 @@ const createWindow = () => {
         titleBarStyle: 'hidden',
         fullscreenable: false,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            nodeIntegration: true,
+            contextIsolation: true,
+            enableRemoteModule: false,
+            preload: path.join(__dirname, "preload.js") // use a preload script
         }
     })
     mainWindow.loadFile('./frontend/app/app.html')
@@ -57,9 +60,9 @@ app.whenReady().then(async () => {
         if (d.title == 'navGuild') {
             if (d.type == 'GUILD' && client.guilds.cache.get(d.id)) {
                 let channels = client.guilds.cache.get(d.id).channels.cache
-                let noCatChannels = channels.filter(c => c.type == 0 && c.parentId == null).sort((a,b) => a.rawPosition - b.rawPosition)
-                let categories = channels.filter(c => c.type == 4).sort((a,b) => a.rawPosition - b.rawPosition)
-                let catChannels = channels.filter(c => c.type == 0 && c.parentId != null).sort((a,b) => a.rawPosition - b.rawPosition)
+                let noCatChannels = channels.filter(c => c.type == 0 && c.parentId == null).sort((a, b) => a.rawPosition - b.rawPosition)
+                let categories = channels.filter(c => c.type == 4).sort((a, b) => a.rawPosition - b.rawPosition)
+                let catChannels = channels.filter(c => c.type == 0 && c.parentId != null).sort((a, b) => a.rawPosition - b.rawPosition)
                 let sortedCh = []
                 sortedCh = sortedCh.concat(Array.from(noCatChannels))
                 categories.forEach((cat, key) => {
@@ -67,10 +70,20 @@ app.whenReady().then(async () => {
                     let currentCh = catChannels.filter(c => c.parentId == cat.id)
                     sortedCh = sortedCh.concat(Array.from(currentCh))
                 })
-                return { title: 'navGuildSuccess', d: {
-                    channels: sortedCh,
-                    users: 0 //client.guilds.cache.get(d.id).members.cache.array()
-                }}
+                console.log(sortedCh)
+                sortedCh = sortedCh.map(c => {
+                    return {
+                        type: c[1].type,
+                        id: c[1].id,
+                        name: c[1].name
+                    }
+                })
+                return {
+                    title: 'navGuildSuccess', d: {
+                        channels: sortedCh,
+                        users: 0 //client.guilds.cache.get(d.id).members.cache.array()
+                    }
+                }
             }
         }
         //client related stuff
