@@ -21,6 +21,7 @@ const createWindow = () => {
         minHeight: 600,
         titleBarStyle: 'hidden',
         fullscreenable: false,
+        icon: "./icon.png",
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
