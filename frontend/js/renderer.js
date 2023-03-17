@@ -1,5 +1,13 @@
 const { toBackend } = require('./electronipc.js')
-let renderChannel = function (html, c) {
+let renderUserList = function (html, u) {
+    let newUser = document.createElement('div')
+    newUser.classList.add('user')
+    newUser.innerHTML =
+        `<img class="userAvatar" src="${u.avatar}">
+        <p class="userName" id="${u.id}">${u.username + '#' + u.tag}</p>`
+    html.memberslist.append(newUser)
+}
+let renderChannelList = function (html, c, guildID) {
     if (c.type == 0) {
         let newChannel = document.createElement('div')
         newChannel.classList.add('channel')
@@ -7,6 +15,11 @@ let renderChannel = function (html, c) {
             `<img class="channelIcon" src="../assets/channel.svg">
             <p class="channelName" id="${c.id}">${c.name}</p>`
         html.channelslist.append(newChannel)
+        newChannel.addEventListener('click', async e => {
+            let channelInfo = await toBackend({ title: 'navChannel', guildID: guildID, id: c.id })
+            html.msgcontainer.textContent = ''
+            console.log(channelInfo)
+        })
     } if (c.type == 4) {
         let newCategory = document.createElement('div')
         newCategory.classList.add('category')
@@ -19,18 +32,19 @@ let renderGuild = function (html, g) {
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
     newGuild.innerHTML =
-        `<img class="guildIcon" src="${g[2]}"></img>
-        <div class="guildName" style="display: none;">${g[0]}</div>`
+        `<img class="guildIcon" src="${g.avatar}"></img>
+        <div class="guildName" style="display: none;">${g.name}</div>`
     html.serverslist.append(newGuild)
     newGuild.children[0].addEventListener('click', async e => {
-        let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g[1] })
+        let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g.id })
         html.channelslist.innerHTML = ''
-        html.channeltop.textContent = g[0]
-        console.log(guildInfo)
-        guildInfo.d.channels.forEach(c => { renderChannel(html, c); })
+        html.memberslist.innerHTML = ''
+        html.channeltop.textContent = g.name
+        guildInfo.users.forEach(u => renderUserList(html, u))
+        guildInfo.channels.forEach(c => { renderChannelList(html, c, g.id); })
     })
 }
 module.exports = {
-    renderChannel,
+    renderChannelList,
     renderGuild
 }

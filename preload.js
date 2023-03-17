@@ -1,6 +1,6 @@
 const { ipcRenderer } = require('electron')
 const path = require('path')
-let { renderChannel, renderGuild } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'renderer.js'))
+let { renderChannelList, renderGuild } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'renderer.js'))
 let { toBackend } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'electronipc.js'))
 
 let html = {}
@@ -30,8 +30,8 @@ window.addEventListener('load', async () => {
     if (window.location.href.split('/').pop() == 'app.html') {
         let initInfo = await toBackend({ title: 'initInfo' })
         html.profile.innerHTML =
-            `<img class="botIcon" src="${initInfo.user[1]}"></img>
-            <div class="botName">${initInfo.user[0]}</div>`
+            `<img class="botIcon" src="${initInfo.user.avatar}"></img>
+            <div class="botName">${initInfo.user.username}</div>`
         for (let g in initInfo.guilds) {
             renderGuild(html, initInfo.guilds[g])
             runOnceRefreshHtmlElements()

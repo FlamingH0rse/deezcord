@@ -5,7 +5,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 //discord:
 const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
 
 const path = require('path')
 
@@ -51,8 +51,16 @@ app.whenReady().then(async () => {
         console.log(d)
         if (d.title == 'initInfo') {
             let res = {}
-            res.user = [client.user.tag, client.user.displayAvatarURL()]
-            res.guilds = client.guilds.cache.map(g => [g.name, g.id, g.iconURL()])
+            res.user = {
+                username: client.user.tag, avatar: client.user.displayAvatarURL()
+            }
+            res.guilds = client.guilds.cache.map(g => {
+                return {
+                    name: g.name,
+                    id: g.id,
+                    avatar: g.iconURL()
+                }
+            })
             if (savedcache.lastGuild.type == 'GUILD' && client.guilds.cache.get(savedcache.lastGuild.id)) {
                 res.currentGuild = client.guilds.cache.get(savedcache.lastGuild.id)
             }
@@ -71,7 +79,6 @@ app.whenReady().then(async () => {
                     let currentCh = catChannels.filter(c => c.parentId == cat.id)
                     sortedCh = sortedCh.concat(Array.from(currentCh))
                 })
-                console.log(sortedCh)
                 sortedCh = sortedCh.map(c => {
                     return {
                         type: c[1].type,
@@ -79,13 +86,44 @@ app.whenReady().then(async () => {
                         name: c[1].name
                     }
                 })
-                return {
-                    title: 'navGuildSuccess', d: {
-                        channels: sortedCh,
-                        users: 0 //client.guilds.cache.get(d.id).members.cache.array()
+                let users = client.guilds.cache.get(d.id).members.cache.map(u => {
+                    return {
+                        id: u.user.id,
+                        bot: u.user.bot,
+                        username: u.user.username,
+                        tag: u.user.discriminator,
+                        avatar: u.displayAvatarURL()
                     }
+                })
+                return {
+                    title: 'navGuildSuccess',
+                    channels: sortedCh,
+                    users: users
+
                 }
             }
+        }
+        if (d.title == 'navChannel') {
+            let channel = client.guilds.cache.get(d.guildID).channels.cache.get(d.id)
+            let res = {}
+
+            channel.messages.fetch({ limit: 100 }).then(messages => {
+                res.messages = messages.map(m => {
+                    return {
+                        id: m.id,
+                        created: m.createdTimestamp,
+                        content: m.content,
+                        author: {
+                            id: m.author.id,
+                            bot: m.author.bot,
+                            username: m.author.username,
+                            avatar: m.author.displayAvatarURL()
+                        }
+                    }
+                })
+            })
+            res.title = 'navChannelSuccess'
+            return res
         }
         //client related stuff
         if (d.title == 'minimizeWin') mainWindow.minimize()
