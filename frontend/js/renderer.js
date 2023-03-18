@@ -48,6 +48,7 @@ let renderGuild = function (html, g) {
     newGuild.children[0].addEventListener('click', async e => {
         let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g.id })
         html.channelslist.innerHTML = ''
+        html.msgcontainer.innerHTML = ''
         html.memberslist.innerHTML = ''
         html.channeltop.textContent = g.name
         guildInfo.users.forEach(u => renderUserList(html, u))
