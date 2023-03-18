@@ -122,6 +122,7 @@ app.whenReady().then(async () => {
                     }
                 })
                 res.title = 'navChannelSuccess'
+                res.channelName = channel.name
                 mainWindow.webContents.send('frontend', res)
             })
         }
