@@ -14,7 +14,7 @@ let renderUserList = function (html, u) {
 let renderMessage = function (html, m) {
     let newMessage = document.createElement('div')
     newMessage.classList.add('message')
-    newMessage.innerHTML = 
+    newMessage.innerHTML =
         `<img class="authorAvatar" src="${m.author.avatar}">
         <div class="msgcompartment">
             <div class="uppercmp">
@@ -24,12 +24,14 @@ let renderMessage = function (html, m) {
             </div>
             <p class="messagecontent" id="${m.id}">${m.content}</p>
         </div>`
+    /*    
     if (html.msgcontainer.lastChild.querySelector('.authorName').id == m.author.id) {
         newMessage.classList.replace('message', 'messagecont')
         newMessage.innerHTML = 
             `<p class="timeStamp" hidden>${formatDate(new Date(m.createdAt))}</p>
             <p class="messagecontent" id="${m.id}" data-authorid="${m.author.id}">${m.content}</p>`
     }
+    */
     html.msgcontainer.prepend(newMessage)
 }
 
@@ -42,12 +44,9 @@ let renderChannelList = function (html, c, guildID) {
             <p class="channelName" id="${c.id}">${c.name}</p>`
         html.channelslist.append(newChannel)
         newChannel.addEventListener('click', async e => {
-            html.middletop.id = c.id
-            html.middletop.innerHTML = c.name
             appState.cachedGuilds[guildID] = c.id
             saveAppData('app-state', appState)
             toBackend({ title: 'navChannel', guildID: guildID, id: c.id })
-            html.msgcontainer.innerHTML = ''
         })
     } if (c.type == 4) {
         let newCategory = document.createElement('div')
@@ -77,7 +76,6 @@ let renderGuild = function (html, g) {
         guildInfo.users.forEach(u => renderUserList(html, u))
         guildInfo.channels.forEach(c => renderChannelList(html, c, g.id))
         let lastChannel = appState.cachedGuilds[g.id] || guildInfo.channels.filter(c => c.type == 0)[0].id
-        
         toBackend({ title: 'navChannel', guildID: g.id, id: lastChannel })
     })
 }

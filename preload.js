@@ -28,7 +28,10 @@ ipcRenderer.on('frontend', (event, d) => {
     console.log(d)
     runOnceRefreshHtmlElements()
     if (d.title == 'navChannelSuccess') {
+        html.inputbox.setAttribute('placeholder', `Message #${d.channelName}`)
+        html.middletop.id = d.channelID
         html.middletop.innerHTML = d.channelName
+        html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
     }
 })

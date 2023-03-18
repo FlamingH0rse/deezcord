@@ -112,7 +112,7 @@ html,
     background-color: #313338;
 }
 
-.discordlogo:hover{
+.discordlogo:hover {
     animation: discordlogoHover 0.25s forwards;
 }
 
@@ -152,7 +152,7 @@ html,
     }
 }
 
-@keyframes discordlogoHover{
+@keyframes discordlogoHover {
     100% {
         background-color: #5865F2;
         border-radius: 30%;
@@ -180,7 +180,7 @@ html,
 
 .channeltop {
     color: white;
-    font-family: Uni-Sans-SemiBold;
+    font-family: gg sans;
     background-color: #2F3136;
     width: 224px;
     padding-left: 16px;
@@ -214,7 +214,7 @@ html,
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
-    font-family: Uni-Sans-Regular;
+    font-family: gg sans;
     display: flex;
     flex-direction: column;
 }
@@ -290,7 +290,7 @@ html,
     line-height: 16px;
     width: 216px;
     margin-left: 16px;
-    font-family: Uni-Sans-Bold;
+    font-family: gg sans;
 }
 
 .category:hover {
@@ -345,8 +345,7 @@ html,
 .msgcontainer {
     height: 1px;
     overflow-y: scroll;
-
-    font-family: Uni-Sans-Regular;
+    font-family: gg sans;
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1;
@@ -435,7 +434,7 @@ html,
 }
 
 #inputbox {
-    font-family: Uni-Sans-Regular;
+    font-family: gg sans;
     color: white;
     background-color: #424549;
     height: 44px;
@@ -491,7 +490,7 @@ html,
     height: 42px;
 }
 
-.userAvatar{
+.userAvatar {
     margin-right: 9px;
     height: 32px;
     width: 32px;
