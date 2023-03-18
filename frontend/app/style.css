@@ -365,6 +365,11 @@ html,
     background: transparent;
 }
 
+/* the messages itself */
+.message {
+
+}
+
 /* where u can type messages */
 .inputsection {
     display: flex;
