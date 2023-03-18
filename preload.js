@@ -49,7 +49,7 @@ window.addEventListener('load', async () => {
         renderGuildList.then(() => {
             console.log(lastGuild)
             if (lastGuild && html[lastGuild]) html[lastGuild].click()
-            else html.serverlist.children.filter(g => g.classList.contains('guildIcon'))[0].click()
+            else html.serverslist.children.filter(g => g.classList.contains('guildIcon'))[0].click()
         })
     }
 })
