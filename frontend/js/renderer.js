@@ -4,7 +4,7 @@ let renderUserList = function (html, u) {
     newUser.classList.add('user')
     newUser.innerHTML =
         `<img class="userAvatar" src="${u.avatar}">
-        <p class="userName" id="${u.id}">${u.username + '#' + u.tag}</p>`
+        <p class="userName" id="${u.id}">${u.username}</p>`
     html.memberslist.append(newUser)
 }
 let renderMessage = function (html, m) {
