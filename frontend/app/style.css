@@ -428,3 +428,25 @@ html,
     border-radius: 10px;
     background: transparent;
 }
+
+/* the users itself */
+.user {
+    margin-top: 5px;
+    margin-left: 15px;
+    display: flex;
+    height: 42px;
+}
+
+.userAvatar{
+    margin-right: 9px;
+    height: 32px;
+    width: 32px;
+
+    border-radius: 50%;
+}
+
+.userName {
+    font-family: gg sans;
+    font-size: 16px;
+    color: #949BA4;
+}
