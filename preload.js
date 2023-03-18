@@ -1,7 +1,9 @@
 const { ipcRenderer } = require('electron')
 const path = require('path')
-let { renderChannelList, renderGuild, renderMessage } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'renderer.js'))
-let { toBackend } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'misc.js'))
+let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
+let { renderChannelList, renderGuild, renderMessage } = require(path.join(frontendPath, 'js', 'renderer.js'))
+let { toBackend } = require(path.join(frontendPath, 'js', 'misc.js'))
+let { lastGuild } = require(path.join(frontendPath, 'app-data', 'app-state.json'))
 
 let html = {}
 let titleBarInit = false
@@ -25,7 +27,10 @@ function runOnceRefreshHtmlElements() {
 ipcRenderer.on('frontend', (event, d) => {
     console.log(d)
     runOnceRefreshHtmlElements()
-    if (d.title == 'navChannelSuccess') d.messages.forEach(m => renderMessage(html, m))
+    if (d.title == 'navChannelSuccess') {
+        html.middletop.textContent = d.channelName
+        d.messages.forEach(m => renderMessage(html, m))
+    }
 })
 window.addEventListener('load', async () => {
     runOnceRefreshHtmlElements()
@@ -34,9 +39,17 @@ window.addEventListener('load', async () => {
         html.profile.innerHTML =
             `<img class="botIcon" src="${initInfo.user.avatar}"></img>
             <div class="botName">${initInfo.user.username}</div>`
-        for (let g in initInfo.guilds) {
-            renderGuild(html, initInfo.guilds[g])
-            runOnceRefreshHtmlElements()
-        }
+        let renderGuildList = new Promise((res, rej) => {
+            for (let g in initInfo.guilds) {
+                renderGuild(html, initInfo.guilds[g])
+                runOnceRefreshHtmlElements()
+            }
+            res()
+        })
+        renderGuildList.then(() => {
+            console.log(lastGuild)
+            if (lastGuild && html[lastGuild]) html[lastGuild].click()
+            else html.serverlist.children.filter(g => g.classList.contains('guildIcon'))[0].click()
+        })
     }
 })

@@ -1,4 +1,6 @@
 const { toBackend, formatDate } = require('./misc.js')
+const appState = require('../app-data/app-state.json')
+const { saveAppData } = require('./fs.js')
 let renderUserList = function (html, u) {
     let newUser = document.createElement('div')
     newUser.classList.add('user')
@@ -27,6 +29,10 @@ let renderChannelList = function (html, c, guildID) {
             <p class="channelName" id="${c.id}">${c.name}</p>`
         html.channelslist.append(newChannel)
         newChannel.addEventListener('click', async e => {
+            html.middletop.id = c.id
+            html.middletop.textContent = c.name
+            appState.cachedGuilds[guildID] = c.id
+            saveAppData('app-state', appState)
             toBackend({ title: 'navChannel', guildID: guildID, id: c.id })
             html.msgcontainer.textContent = ''
         })
@@ -42,10 +48,12 @@ let renderGuild = function (html, g) {
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
     newGuild.innerHTML =
-        `<img class="guildIcon" src="${g.avatar}"></img>
+        `<img class="guildIcon" id="${g.id}" src="${g.avatar}"></img>
         <div class="guildName" style="display: none;">${g.name}</div>`
     html.serverslist.append(newGuild)
     newGuild.children[0].addEventListener('click', async e => {
+        appState.lastGuild = g.id
+        saveAppData('app-state', appState)
         let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g.id })
         html.channelslist.innerHTML = ''
         html.msgcontainer.innerHTML = ''
@@ -53,6 +61,9 @@ let renderGuild = function (html, g) {
         html.channeltop.textContent = g.name
         guildInfo.users.forEach(u => renderUserList(html, u))
         guildInfo.channels.forEach(c => renderChannelList(html, c, g.id))
+        let lastChannel = appState.cachedGuilds[g.id] || guildInfo.channels.filter(c => c.type == 0)[0].id
+        
+        toBackend({ title: 'navChannel', guildID: g.id, id: lastChannel })
     })
 }
 module.exports = {
