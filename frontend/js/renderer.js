@@ -33,11 +33,11 @@ let renderChannelList = function (html, c, guildID) {
         html.channelslist.append(newChannel)
         newChannel.addEventListener('click', async e => {
             html.middletop.id = c.id
-            html.middletop.textContent = c.name
+            html.middletop.innerHTML = c.name
             appState.cachedGuilds[guildID] = c.id
             saveAppData('app-state', appState)
             toBackend({ title: 'navChannel', guildID: guildID, id: c.id })
-            html.msgcontainer.textContent = ''
+            html.msgcontainer.innerHTML = ''
         })
     } if (c.type == 4) {
         let newCategory = document.createElement('div')
@@ -62,7 +62,8 @@ let renderGuild = function (html, g) {
         html.channelslist.innerHTML = ''
         html.msgcontainer.innerHTML = ''
         html.memberslist.innerHTML = ''
-        html.channeltop.textContent = g.name
+        html.middletop.innerHTML = ''
+        html.channeltop.innerHTML = g.name
         guildInfo.users.forEach(u => renderUserList(html, u))
         guildInfo.channels.forEach(c => renderChannelList(html, c, g.id))
         let lastChannel = appState.cachedGuilds[g.id] || guildInfo.channels.filter(c => c.type == 0)[0].id
