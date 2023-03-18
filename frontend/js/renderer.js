@@ -27,7 +27,7 @@ let renderMessage = function (html, m) {
     if (html.msgcontainer.lastChild.querySelector('.authorName').id == m.author.id) {
         newMessage.classList.replace('message', 'messagecont')
         newMessage.innerHTML = 
-            `<p class="timeStamp">${formatDate(new Date(m.createdAt))}</p>
+            `<p class="timeStamp" hidden>${formatDate(new Date(m.createdAt))}</p>
             <p class="messagecontent" id="${m.id}" data-authorid="${m.author.id}">${m.content}</p>`
     }
     html.msgcontainer.prepend(newMessage)
