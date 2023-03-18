@@ -1,7 +1,7 @@
 const { ipcRenderer } = require('electron')
 const path = require('path')
 let { renderChannelList, renderGuild, renderMessage } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'renderer.js'))
-let { toBackend } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'electronipc.js'))
+let { toBackend } = require(path.join(window.location.pathname.slice(1), '..', '..', 'js', 'misc.js'))
 
 let html = {}
 let titleBarInit = false
