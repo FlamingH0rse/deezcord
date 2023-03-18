@@ -367,7 +367,54 @@ html,
 
 /* the messages itself */
 .message {
+    flex-shrink: 0;
+    margin-top: 11px;
 
+    height: 48px;
+    display: flex;
+}
+
+.msgcompartment {
+    margin-bottom: 3px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.uppercmp {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.authorName {
+    margin-right: 6px;
+
+    color: #F2F3F5;
+    font: gg sans;
+    font-size: 16px;
+}
+
+.timeStamp {
+    font: gg sans;
+    color: gray;
+
+    margin-left: 6px;
+
+    font-size: 16px;
+}
+
+.authorAvatar {
+    margin-left: 16px;
+    margin-right: 16px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.messagecontent {
+    font: gg sans;
+    color: #DBDEE1;
+    font-size: 16px;
+    word-break: break-all;
 }
 
 /* where u can type messages */
