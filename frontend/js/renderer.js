@@ -1,6 +1,7 @@
 const { toBackend, formatDate } = require('./misc.js')
 const appState = require('../app-data/app-state.json')
 const { saveAppData } = require('./fs.js')
+
 let renderUserList = function (html, u) {
     let newUser = document.createElement('div')
     newUser.classList.add('user')
@@ -9,6 +10,7 @@ let renderUserList = function (html, u) {
         <p class="userName" id="${u.id}">${u.username}</p>`
     html.memberslist.append(newUser)
 }
+
 let renderMessage = function (html, m) {
     let newMessage = document.createElement('div')
     newMessage.classList.add('message')
@@ -20,6 +22,7 @@ let renderMessage = function (html, m) {
         <p class="messagecontent" id="${m.id}">${m.content}</p>`
     html.msgcontainer.prepend(newMessage)
 }
+
 let renderChannelList = function (html, c, guildID) {
     if (c.type == 0) {
         let newChannel = document.createElement('div')
@@ -44,6 +47,7 @@ let renderChannelList = function (html, c, guildID) {
         html.channelslist.append(newCategory)
     }
 }
+
 let renderGuild = function (html, g) {
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
@@ -66,6 +70,7 @@ let renderGuild = function (html, g) {
         toBackend({ title: 'navChannel', guildID: g.id, id: lastChannel })
     })
 }
+
 module.exports = {
     renderChannelList,
     renderGuild,
