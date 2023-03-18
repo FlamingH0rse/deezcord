@@ -21,7 +21,7 @@ const createWindow = () => {
         minHeight: 600,
         titleBarStyle: 'hidden',
         fullscreenable: false,
-        icon: "./icon.png",
+        icon: "./frontend/assets/appicon.png",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true,
@@ -46,6 +46,7 @@ const connectDiscord = () => {
 }
 app.whenReady().then(async () => {
     await connectDiscord()
+    await require('./frontend/js/fs.js').resolveAppData()
     createWindow()
     ipcMain.handle('backend', (event, d) => {
         console.log(d)

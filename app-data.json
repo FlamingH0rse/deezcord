@@ -1,0 +1,8 @@
+{
+    "app-settings": {},
+    "app-state": {
+        "lastGuild": "",
+        "cachedGuilds": {}
+    },
+    "discord-settings": {}
+}
