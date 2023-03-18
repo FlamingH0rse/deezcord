@@ -431,6 +431,8 @@ html,
 
 /* the users itself */
 .user {
+    flex-shrink: 0;
+
     margin-top: 5px;
     margin-left: 15px;
     display: flex;
