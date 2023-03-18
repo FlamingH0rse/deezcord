@@ -14,12 +14,16 @@ let renderUserList = function (html, u) {
 let renderMessage = function (html, m) {
     let newMessage = document.createElement('div')
     newMessage.classList.add('message')
-    newMessage.innerHTML =
-        `<img class="authorAvatar" src="${m.author.avatar}">` +
-        (m.author.bot ? `<p class="botBadge">BOT</p>` : ``) +
-        `<p class="authorName" id="${m.author.id}">${m.author.username}</p>
-        <p class="timeStamp">${formatDate(new Date(m.createdAt))}</p>
-        <p class="messagecontent" id="${m.id}">${m.content}</p>`
+    newMessage.innerHTML = 
+        `<img class="authorAvatar" src="${m.author.avatar}">
+        <div class="msgcompartment">
+            <div class="uppercmp">
+                <p class="authorName" id="${m.author.id}">${m.author.username}</p>
+                ${m.author.bot ? `<p class="botBadge">BOT</p>` : ``}
+                <p class="timeStamp">${formatDate(new Date(m.createdAt))}</p>
+            </div>
+            <p class="messagecontent" id="${m.id}">${m.content}</p>
+        </div>`
     html.msgcontainer.prepend(newMessage)
 }
 
