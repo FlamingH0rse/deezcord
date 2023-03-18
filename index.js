@@ -1,5 +1,4 @@
-const botconfig = require('./config.json');
-const savedcache = require('./cache.json')
+const botconfig = require('./config.json')
 const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 
 //discord:
@@ -46,7 +45,7 @@ const connectDiscord = () => {
 }
 app.whenReady().then(async () => {
     await connectDiscord()
-    await require('./frontend/js/fs.js').resolveAppData()
+    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'))
     createWindow()
     ipcMain.handle('backend', (event, d) => {
         console.log(d)
@@ -62,9 +61,6 @@ app.whenReady().then(async () => {
                     avatar: g.iconURL()
                 }
             })
-            if (savedcache.lastGuild.type == 'GUILD' && client.guilds.cache.get(savedcache.lastGuild.id)) {
-                res.currentGuild = client.guilds.cache.get(savedcache.lastGuild.id)
-            }
             return res
         }
         if (d.title == 'navGuild') {

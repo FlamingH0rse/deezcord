@@ -1,15 +1,18 @@
 const fs = require('fs')
 const path = require('path')
-let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
+// Don't put DOM elements outside functions
 module.exports = {
-    resolveAppData: function () {
+    resolveAppData: function (frontPath) {
         return new Promise((res, rej) => {
-            let appDataTemplate = require(path.join(frontendPath, '..', 'app-data.json'))
+            console.log(path.join(frontPath, '..', 'app-data.json'))
+            let appDataTemplate = require(path.join(frontPath, '..', 'app-data.json'))
             for (let file in appDataTemplate) {
-                let dirPath = path.join(frontendPath, 'app-data')
+                let dirPath = path.join(frontPath, 'app-data')
                 let dirExists = fs.existsSync(dirPath)
-                if (!dirExists) fs.mkdir(dirPath)
-                let filePath = path.join(frontendPath, 'app-data', `${file}.json`)
+                if (!dirExists) fs.mkdir(dirPath, err => {
+                    if (err) rej()
+                })
+                let filePath = path.join(frontPath, 'app-data', `${file}.json`)
                 let fileExists = fs.existsSync(filePath)
 
                 if (!fileExists || Object.keys(appDataTemplate[file]) != Object.keys(require(filePath))) {
@@ -25,6 +28,7 @@ module.exports = {
         })
     },
     saveAppData: function (filename, data) {
+        let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
         data = JSON.stringify(data, null, '\t')
         fs.writeFile(path.join(frontendPath, 'app-data', `${filename}.json`), data, err => {
             if (err) console.log(err)
