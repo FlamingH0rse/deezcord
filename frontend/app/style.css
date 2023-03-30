@@ -343,6 +343,8 @@ html,
 }
 
 .msgcontainer {
+    display: flex;
+    flex-direction: column;
     height: 1px;
     overflow-y: scroll;
     font-family: gg sans;
@@ -366,10 +368,11 @@ html,
 
 /* the messages itself */
 .message {
-    flex-shrink: 0;
+    flex-grow: 1;
     margin-top: 11px;
 
-    height: 48px;
+    /* temporary fix (needs to set height at 48px at minimum)*/
+    height: max-content;
     display: flex;
 }
 
@@ -414,6 +417,8 @@ html,
     color: #DBDEE1;
     font-size: 16px;
     word-break: break-all;
+
+    flex-grow: 1;
 }
 
 /* where u can type messages */
