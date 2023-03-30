@@ -353,17 +353,13 @@ html,
     flex-shrink: 1;
 }
 
-.msgcontainer:hover::-webkit-scrollbar-thumb {
-    background: whitesmoke;
-}
-
 .msgcontainer::-webkit-scrollbar {
     width: 5px;
 }
 
 .msgcontainer::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: transparent;
+    background: whitesmoke;
 }
 
 /* the messages itself */
@@ -412,6 +408,7 @@ html,
     border-radius: 50%;
 }
 
+/* this is where the message gets stored */
 .messagecontent {
     font: gg sans;
     color: #DBDEE1;
