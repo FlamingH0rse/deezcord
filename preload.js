@@ -68,4 +68,7 @@ window.addEventListener('load', async () => {
             else html.guildlist.querySelectorAll('.guildIcon')[0].click()
         })
     }
+    if (window.location.href.split('/').pop() == 'login.html') {
+        // to do
+    }
 })

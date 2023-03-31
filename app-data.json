@@ -1,8 +1,12 @@
 {
     "app-settings": {},
     "app-state": {
+        "lastClient": "",
         "lastGuild": "",
         "cachedGuilds": {}
     },
-    "discord-settings": {}
+    "discord-settings": {},
+    "discord-auth": {
+        "clients": {}
+    }
 }
