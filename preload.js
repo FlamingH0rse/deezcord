@@ -18,6 +18,11 @@ function runOnceRefreshHtmlElements() {
         html.maximize.addEventListener('click', async () => {
             let res = await toBackend({ title: 'maximizeWin' })
             html.maximize.innerHTML = res.title == 'maximized' ? '❐' : '☐'
+            html.loginbox.style.width = res.title == 'maximized' ? '720px' : '416px'
+            html.loginbox.style.height = res.title == 'maximized' ? '344px' : '340px'
+            let toggleQR = res.title == 'maximized' ? 'true' : 'false'
+            html.loginbox?.setAttribute('QR', toggleQR)
+
         })
         html.close.addEventListener('click', () => toBackend({ title: 'closeWin' }))
         titleBarInit = true
@@ -33,6 +38,13 @@ ipcRenderer.on('frontend', (event, d) => {
         html.channeltop.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
+    }
+    if (d.title == 'maximized' || d.title == 'unMaximized') {
+        html.maximize.innerHTML = d.title == 'maximized' ? '❐' : '☐'
+        html.loginbox.style.width = d.title == 'maximized' ? '720px' : '416px'
+        html.loginbox.style.height = d.title == 'maximized' ? '344px' : '340px'
+        let toggleQR = d.title == 'maximized' ? 'true' : 'false'
+        html.loginbox?.setAttribute('QR', toggleQR)
     }
 })
 window.addEventListener('load', async () => {
