@@ -76,11 +76,13 @@ html,
 }
 
 /* ok */
-.loginsection {
+.appsection {
     background-image: url("../assets/login.svg");
+    background-size: cover;
     display: flex;
     flex-grow: 1;
     flex-shrink: 1;
+    font-family: gg sans
 }
 
 .loginbox {
@@ -89,4 +91,74 @@ html,
     height: 344px;
     padding: 32px;
     margin: auto;
+    border-radius: 10px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.subheading {
+    text-align: center;
+    font-size: 16px;
+    color: #B5BAC1;
+    margin-bottom: 16px;
+}
+
+.formheader {
+    font-size: 12px;
+    color: #B0B5BC;
+    margin-top: 20px;
+}
+.inputbox {
+    background-color: #1E1F22;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-family: gg sans;
+    color: white;
+    outline: none;
+    border: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.forgottoken {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+.loginbutton {
+    background-color: #5865F2;
+    width: 100%;
+    height: 44px;
+    border-radius: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 12px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+.loginbutton:hover {
+    background-color: #4752C4;
+}
+.register {
+    color: #7D838B;
+    font-size: 14px
+}
+.loginsection {
+    width: 416px;
+    height: 340px;
 }
