@@ -29,8 +29,8 @@ ipcRenderer.on('frontend', (event, d) => {
     runOnceRefreshHtmlElements()
     if (d.title == 'navChannelSuccess') {
         html.inputbox.setAttribute('placeholder', `Message #${d.channelName}`)
-        html.middletop.id = d.channelID
-        html.middletop.innerHTML = d.channelName
+        html.channeltop.id = d.channelID
+        html.channeltop.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
     }
@@ -49,11 +49,11 @@ window.addEventListener('load', async () => {
             }
             res()
         })
-        console.log(html.serverslist.children)
+        console.log(html.guildlist.children)
         renderGuildList.then(() => {
             console.log(lastGuild)
             if (lastGuild && html[lastGuild]) html[lastGuild].click()
-            else html.serverslist.querySelectorAll('.guildIcon')[0].click()
+            else html.guildlist.querySelectorAll('.guildIcon')[0].click()
         })
     }
 })

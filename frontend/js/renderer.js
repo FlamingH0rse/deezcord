@@ -42,7 +42,7 @@ let renderChannelList = function (html, c, guildID) {
         newChannel.innerHTML =
             `<img class="channelIcon" src="../assets/channel.svg">
             <p class="channelName" id="${c.id}">${c.name}</p>`
-        html.channelslist.append(newChannel)
+        html.channellist.append(newChannel)
         newChannel.addEventListener('click', async e => {
             appState.cachedGuilds[guildID] = c.id
             saveAppData('app-state', appState)
@@ -53,7 +53,7 @@ let renderChannelList = function (html, c, guildID) {
         newCategory.classList.add('category')
         newCategory.innerHTML =
             `<p class="categoryName" id="${c.id}">${c.name.toUpperCase()}</p>`
-        html.channelslist.append(newCategory)
+        html.channellist.append(newCategory)
     }
 }
 
@@ -63,16 +63,16 @@ let renderGuild = function (html, g) {
     newGuild.innerHTML =
         `<img class="guildIcon" id="${g.id}" src="${g.avatar}"></img>
         <div class="guildName" style="display: none;">${g.name}</div>`
-    html.serverslist.append(newGuild)
+    html.guildlist.append(newGuild)
     newGuild.children[0].addEventListener('click', async e => {
         appState.lastGuild = g.id
         saveAppData('app-state', appState)
         let guildInfo = await toBackend({ title: 'navGuild', type: 'GUILD', id: g.id })
-        html.channelslist.innerHTML = ''
+        html.channellist.innerHTML = ''
         html.msgcontainer.innerHTML = ''
         html.memberslist.innerHTML = ''
-        html.middletop.innerHTML = ''
-        html.channeltop.innerHTML = g.name
+        html.channeltop.innerHTML = ''
+        html.channellisttop.innerHTML = g.name
         guildInfo.users.forEach(u => renderUserList(html, u))
         guildInfo.channels.forEach(c => renderChannelList(html, c, g.id))
         let lastChannel = appState.cachedGuilds[g.id] || guildInfo.channels.filter(c => c.type == 0)[0].id

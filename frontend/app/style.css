@@ -76,7 +76,7 @@ html,
 }
 
 /* ok */
-.actualbody {
+.appsection {
     display: flex;
 
     flex-grow: 1;
@@ -84,7 +84,7 @@ html,
 }
 
 /* servers list */
-.serverslist {
+.guildlist {
     background-color: #202225;
     flex-grow: 0;
     flex-shrink: 0;
@@ -160,7 +160,7 @@ html,
 }
 
 /* main part */
-.mainpart {
+.guildsection {
     display: flex;
     flex-direction: column;
 
@@ -169,7 +169,7 @@ html,
 }
 
 /* top part of main */
-.tpart {
+.toppart {
     background-color: white;
     height: 48px;
     display: flex;
@@ -178,7 +178,7 @@ html,
     filter: drop-shadow(0 2px rgba(32, 34, 37, 0.3))
 }
 
-.channeltop {
+.channellisttop {
     color: white;
     font-family: gg sans;
     background-color: #2F3136;
@@ -190,26 +190,26 @@ html,
     flex-grow: 0;
 }
 
-.channeltop:hover {
+.channellisttop:hover {
     opacity: 0.97
 }
 
-.middletop {
+.channeltop {
     background-color: #36393F;
     flex-grow: 1;
     flex-shrink: 1
 }
 
 /* bottom part of main */
-.bpart {
+.bottompart {
     background-color: beige;
     display: flex;
     flex-shrink: 1;
     flex-grow: 1;
 }
 
-/* channels */
-.channels {
+/* leftside */
+.leftside {
     background-color: #2F3136;
     width: 240px;
     flex-shrink: 0;
@@ -219,7 +219,7 @@ html,
     flex-direction: column;
 }
 
-.channelslist {
+.channellist {
     flex-grow: 1;
     flex-shrink: 1;
     display: flex;
@@ -230,15 +230,15 @@ html,
     height: 1px;
 }
 
-.channelslist:hover::-webkit-scrollbar-thumb {
+.channellist:hover::-webkit-scrollbar-thumb {
     background: whitesmoke;
 }
 
-.channelslist::-webkit-scrollbar {
+.channellist::-webkit-scrollbar {
     width: 5px;
 }
 
-.channelslist::-webkit-scrollbar-thumb {
+.channellist::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: transparent;
 }
@@ -307,7 +307,7 @@ html,
     flex-shrink: 0;
 }
 
-/* ur profile (bottom part of channels) */
+/* ur profile (bottom part of leftside) */
 
 .profile {
     color: white;
@@ -333,8 +333,8 @@ html,
     font-size: 14px;
 }
 
-/* msgpart */
-.msgpart {
+/* middlepart */
+.middlepart {
     background-color: #36393e;
     flex-grow: 1;
     flex-shrink: 1;
@@ -420,26 +420,30 @@ html,
 
 /* where u can type messages */
 .inputsection {
+    background-color: #424549;
     display: flex;
-    padding-left: 16px;
     padding-right: 16px;
-    height: 68px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 22px;
+    border-radius: 5px;
+    height: 44px;
 }
 
 #attachfile {
-    background-color: #424549;
+    background-color: transparent;
     height: 44px;
     width: 56px;
     border: none;
-
     cursor: pointer;
 }
 
 #inputbox {
     font-family: gg sans;
     color: white;
-    background-color: #424549;
+    background-color: transparent;
     height: 44px;
+    margin-bottom: 20px;
     outline: none;
     border: none;
     flex-grow: 1;
