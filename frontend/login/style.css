@@ -110,6 +110,7 @@ html,
 
 .formheader {
     font-size: 12px;
+    font-weight: bold;
     color: #B0B5BC;
     margin-top: 20px;
 }
@@ -122,6 +123,7 @@ html,
     padding-right: 10px;
     box-sizing: border-box;
     margin-top: 8px;
+    margin-bottom: 4px;
     border-radius: 5px;
     font-family: gg sans;
     color: white;
@@ -131,9 +133,8 @@ html,
     flex-shrink: 1;
 }
 .forgottoken {
+    width: 100%;
     font-size: 14px;
-    margin-top: 4px;
-    margin-bottom: 20px;
 }
 .loginbutton {
     background-color: #5865F2;
@@ -144,6 +145,7 @@ html,
     padding-bottom: 2px;
     padding-left: 16px;
     padding-right: 16px;
+    margin-top: 20px;
     margin-bottom: 12px;
     outline: none;
     border: none;
@@ -158,6 +160,7 @@ html,
     color: #7D838B;
     font-size: 14px
 }
+
 .loginsection {
     width: 416px;
     height: 340px;

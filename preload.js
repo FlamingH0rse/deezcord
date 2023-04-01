@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, shell } = require('electron')
 const path = require('path')
 let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
 let { renderChannelList, renderGuild, renderMessage } = require(path.join(frontendPath, 'js', 'renderer.js'))
@@ -69,6 +69,7 @@ window.addEventListener('load', async () => {
         })
     }
     if (window.location.href.split('/').pop() == 'login.html') {
-        // to do
+        html.forgottoken.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
+        html.createbot.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
     }
 })
