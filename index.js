@@ -45,7 +45,7 @@ const connectDiscord = () => {
 }
 app.whenReady().then(async () => {
     await connectDiscord()
-    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'))
+    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), app.getPath('appData'))
     createWindow()
     ipcMain.handle('backend', (event, d) => {
         console.log(d)

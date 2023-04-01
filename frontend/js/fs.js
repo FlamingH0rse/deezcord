@@ -2,17 +2,17 @@ const fs = require('fs')
 const path = require('path')
 // Don't put DOM elements outside functions
 module.exports = {
-    resolveAppData: function (frontPath) {
+    resolveAppData: function (frontPath, appDataDir) {
         return new Promise((res, rej) => {
             console.log(path.join(frontPath, '..', 'app-data.json'))
             let appDataTemplate = require(path.join(frontPath, '..', 'app-data.json'))
             for (let file in appDataTemplate) {
-                let dirPath = path.join(frontPath, 'app-data')
+                let dirPath = path.join(appDataDir, 'Deezcord')
                 let dirExists = fs.existsSync(dirPath)
                 if (!dirExists) fs.mkdir(dirPath, err => {
                     if (err) rej()
                 })
-                let filePath = path.join(frontPath, 'app-data', `${file}.json`)
+                let filePath = path.join(appDataDir, 'Deezcord', `${file}.json`)
                 let fileExists = fs.existsSync(filePath)
 
                 if (!fileExists || Object.keys(appDataTemplate[file]) != Object.keys(require(filePath))) {
