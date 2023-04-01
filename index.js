@@ -74,14 +74,17 @@ const connectDiscord = () => {
 app.whenReady().then(async () => {
     // Simulate auto update for now
     createLoadingWindow()
-    console.log("here")
+   
     // checking for updates
     await sleep(3000)
-    console.log("now here")
+    
     // Starting
-    await connectDiscord()
+    // await connectDiscord()
     await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), app.getPath('appData'))
+
     createWindow()
+    loadingWindow.close()
+
     ipcMain.handle('backend', (event, d) => {
         console.log(d)
         if (d.title == 'initInfo') {
