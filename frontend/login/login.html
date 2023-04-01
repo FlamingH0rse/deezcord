@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self'  http://cdn.discordapp.com; script-src 'self'">
+
+    <script src="../libs/jquery-3.6.1.min.js"></script>
+    <link href="../libs/fonts/fonts.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    <title>Discord</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="titlebar">
+            <button id="close">X</button>
+            <button id="maximize">☐</button>
+            <button id="minimize">—</button>
+            <div id="middleman"></div>
+            <h1 id="deez">Deezcord</h1>
+        </header>
+        <div class="appsection">
+            <div class="loginbox" QR="false">
+                <div class="loginsection">
+                    <div class="heading">Welcome back!</div>
+                    <div class="subheading">We're so excited to see you again!</div>
+                    <div class="formheader">BOT NICKNAME</div>
+                    <input type="text" class="inputbox" id="nicknamebox"></input>
+                    <div class="formheader">BOT TOKEN</div>
+                    <input type="password" class="inputbox" id="tokenbox"></input>
+                    <div class="forgottoken">Forgot your token?</div>
+                    <button class="loginbutton">Log In</button>
+                    <div class="register">Need a bot?</div>
+                </div>
+                <div class="QRsection">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

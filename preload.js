@@ -18,6 +18,11 @@ function runOnceRefreshHtmlElements() {
         html.maximize.addEventListener('click', async () => {
             let res = await toBackend({ title: 'maximizeWin' })
             html.maximize.innerHTML = res.title == 'maximized' ? '❐' : '☐'
+            html.loginbox.style.width = res.title == 'maximized' ? '720px' : '416px'
+            html.loginbox.style.height = res.title == 'maximized' ? '344px' : '340px'
+            let toggleQR = res.title == 'maximized' ? 'true' : 'false'
+            html.loginbox?.setAttribute('QR', toggleQR)
+
         })
         html.close.addEventListener('click', () => toBackend({ title: 'closeWin' }))
         titleBarInit = true
@@ -29,10 +34,17 @@ ipcRenderer.on('frontend', (event, d) => {
     runOnceRefreshHtmlElements()
     if (d.title == 'navChannelSuccess') {
         html.inputbox.setAttribute('placeholder', `Message #${d.channelName}`)
-        html.middletop.id = d.channelID
-        html.middletop.innerHTML = d.channelName
+        html.channeltop.id = d.channelID
+        html.channeltop.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
+    }
+    if (d.title == 'maximized' || d.title == 'unMaximized') {
+        html.maximize.innerHTML = d.title == 'maximized' ? '❐' : '☐'
+        html.loginbox.style.width = d.title == 'maximized' ? '720px' : '416px'
+        html.loginbox.style.height = d.title == 'maximized' ? '344px' : '340px'
+        let toggleQR = d.title == 'maximized' ? 'true' : 'false'
+        html.loginbox?.setAttribute('QR', toggleQR)
     }
 })
 window.addEventListener('load', async () => {
@@ -49,11 +61,14 @@ window.addEventListener('load', async () => {
             }
             res()
         })
-        console.log(html.serverslist.children)
+        console.log(html.guildlist.children)
         renderGuildList.then(() => {
             console.log(lastGuild)
             if (lastGuild && html[lastGuild]) html[lastGuild].click()
-            else html.serverslist.querySelectorAll('.guildIcon')[0].click()
+            else html.guildlist.querySelectorAll('.guildIcon')[0].click()
         })
+    }
+    if (window.location.href.split('/').pop() == 'login.html') {
+        // to do
     }
 })

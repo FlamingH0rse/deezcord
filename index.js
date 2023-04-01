@@ -28,7 +28,7 @@ const createWindow = () => {
             preload: path.join(__dirname, "preload.js") // use a preload script
         }
     })
-    mainWindow.loadFile('./frontend/app/app.html')
+    mainWindow.loadFile('./frontend/login/login.html')
 }
 
 const connectDiscord = () => {
@@ -138,6 +138,11 @@ app.whenReady().then(async () => {
         }
         else if (d.title == 'closeWin') mainWindow.close()
     })
+    mainWindow.on('resize', () => {
+        if (mainWindow.isMaximized()) mainWindow.webContents.send('frontend', { title: 'maximized' })
+        else mainWindow.webContents.send('frontend', { title: 'unMaximized' })
+    })
+
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
