@@ -1,6 +1,7 @@
-const { toBackend, formatDate } = require('./misc.js')
-const appState = require('../app-data/app-state.json')
-const { saveAppData } = require('./fs.js')
+const { toBackend, formatDate, APP_NAME } = require('./misc.js')
+const { getAppDataPath, saveAppData } = require('./fs.js')
+const path = require('path')
+const appState = require(path.join(getAppDataPath(), 'app-state.json'))
 
 let renderUserList = function (html, u) {
     let newUser = document.createElement('div')

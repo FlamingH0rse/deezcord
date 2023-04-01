@@ -1,9 +1,10 @@
 const { ipcRenderer, shell } = require('electron')
 const path = require('path')
 let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
+let { getAppDataPath } = require(path.join(frontendPath, 'js', 'fs.js'))
 let { renderChannelList, renderGuild, renderMessage } = require(path.join(frontendPath, 'js', 'renderer.js'))
-let { toBackend } = require(path.join(frontendPath, 'js', 'misc.js'))
-let { lastGuild } = require(path.join(frontendPath, 'app-data', 'app-state.json'))
+let { toBackend, APP_NAME } = require(path.join(frontendPath, 'js', 'misc.js'))
+let { lastGuild } = require(path.join(getAppDataPath(), 'app-state.json'))
 
 let html = {}
 let titleBarInit = false
