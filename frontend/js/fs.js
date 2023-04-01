@@ -28,9 +28,9 @@ module.exports = {
         })
     },
     saveAppData: function (filename, data) {
-        let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
+        let appDataPath = path.join(require('electron').remote.app.getPath('appData'))
         data = JSON.stringify(data, null, '\t')
-        fs.writeFile(path.join(frontendPath, 'app-data', `${filename}.json`), data, err => {
+        fs.writeFile(path.join(appDataPath, 'Deezcord', `${filename}.json`), data, err => {
             if (err) console.log(err)
             else return
         })
