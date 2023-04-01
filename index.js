@@ -8,7 +8,34 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 
 const path = require('path')
 
+// Sleep function
+function sleep(ms) {
+    return new Promise(res => setTimeout(res, ms))
+}
+
 let mainWindow
+let loadingWindow
+
+const createLoadingWindow = () => {
+    console.log('Creating login window...')
+
+    loadingWindow = new BrowserWindow({
+        backgroundColor: '#202225',
+        resizable: false,
+        width: 300,
+        height: 350,
+        titleBarStyle: 'hidden',
+        movable: true,
+        fullscreenable: false,
+        icon: "./frontend/assets/appicon.png",
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: true,
+            enableRemoteModule: false,
+        }
+    })
+    loadingWindow.loadFile('./frontend/loadingscreen/loading.html')
+}
 
 const createWindow = () => {
     console.log('Creating window...')
@@ -48,10 +75,21 @@ const connectDiscord = () => {
         });
     })
 }
+
 app.whenReady().then(async () => {
-    await connectDiscord()
+    // Simulate auto update for now
+    createLoadingWindow()
+   
+    // checking for updates
+    await sleep(3000)
+    
+    // Starting
+    // await connectDiscord()
     await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), app.getPath('appData'))
+
     createWindow()
+    loadingWindow.close()
+
     ipcMain.handle('backend', (event, d) => {
         console.log(d)
         if (d.title == 'initInfo') {
@@ -132,9 +170,8 @@ app.whenReady().then(async () => {
         //client related stuff
         if (d.title == 'minimizeWin') mainWindow.minimize()
         else if (d.title == 'maximizeWin') {
-            // ❐ Maximized ☐ Normal
             if (mainWindow.isMaximized()) {
-                mainWindow.unmaximize();
+                mainWindow.unmaximize()
                 return { title: 'unMaximized' }
             } else {
                 mainWindow.maximize();
@@ -143,6 +180,7 @@ app.whenReady().then(async () => {
         }
         else if (d.title == 'closeWin') mainWindow.close()
     })
+
     mainWindow.on('resize', () => {
         if (mainWindow.isMaximized()) mainWindow.webContents.send('frontend', { title: 'maximized' })
         else mainWindow.webContents.send('frontend', { title: 'unMaximized' })
