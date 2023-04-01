@@ -80,11 +80,7 @@ app.whenReady().then(async () => {
     console.log("now here")
     // Starting
     await connectDiscord()
-    console.log('tadaa')
-    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'))
-
-    console.log('finally')
-    loadingWindow.close()
+    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), app.getPath('appData'))
     createWindow()
     ipcMain.handle('backend', (event, d) => {
         console.log(d)

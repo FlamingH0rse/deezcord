@@ -1,5 +1,7 @@
 {
-    "app-settings": {},
+    "app-settings": {
+        "version-id": "m9a73toydujxn9afouyucj9a8dgbabwinuasmxna"
+    },
     "app-state": {
         "lastClient": "",
         "lastGuild": "",
