@@ -87,7 +87,7 @@ html,
 
 .loginbox {
     background-color: #313338;
-    width: 720px;
+    min-width: 720px;
     height: 344px;
     padding: 32px;
     display: flex;
