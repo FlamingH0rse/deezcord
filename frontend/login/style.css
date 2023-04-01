@@ -68,8 +68,7 @@ html,
 }
 
 #deez {
-    color: gainsboro;
-    font-size: 15px;
+    margin-left: 5px;
 
     flex-grow: 0;
     flex-shrink: 0;
