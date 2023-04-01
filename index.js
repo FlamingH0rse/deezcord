@@ -26,6 +26,7 @@ const createLoadingWindow = () => {
         height: 350,
         titleBarStyle: 'hidden',
         movable: true,
+        minimizable: false,
         fullscreenable: false,
         icon: "./frontend/assets/appicon.png",
         webPreferences: {
@@ -39,6 +40,7 @@ const createLoadingWindow = () => {
 
 const createWindow = () => {
     console.log('Creating window...')
+
     mainWindow = new BrowserWindow({
         backgroundColor: '#202225',
         width: 1000,
