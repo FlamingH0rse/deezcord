@@ -32,12 +32,17 @@ const createWindow = () => {
 }
 
 const connectDiscord = () => {
-    return new Promise(res => {
+    return new Promise(async res => {
+        try {
+            await client.login(botconfig.token)
+        } catch (err) {
+            rej(err)
+        }
         client.once('ready', () => {
             console.log('Connected to Discord');
             client.user.setActivity("DiscordForBots", {
                 type: "PLAYING",
-                url: "https://www.github.com/FlamingH0rse"
+                url: "https://www.github.com/FlamingH0rse/"
             });
             res()
         });
@@ -159,4 +164,3 @@ process.on('uncaughtException', err => {
 process.on('unhandledRejection', err => {
     console.log(err)
 })
-client.login(botconfig.token)
