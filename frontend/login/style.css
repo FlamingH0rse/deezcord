@@ -89,6 +89,8 @@ html,
     min-width: 720px;
     height: 344px;
     padding: 32px;
+    display: flex;
+    flex-direction: row;
     margin: auto;
     border-radius: 10px;
 }
@@ -163,4 +165,15 @@ html,
 .loginsection {
     width: 416px;
     height: 340px;
+}
+
+.QRsection {
+    margin: auto;
+}
+.notarickroll {
+    margin: auto;
+    margin-bottom: 32px;
+    background-color: white;
+    width: 176px;
+    height: 176px;
 }
