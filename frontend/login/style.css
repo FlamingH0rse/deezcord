@@ -92,8 +92,8 @@ a {
 
 .loginbox {
     background-color: #313338;
-    min-width: 720px;
-    height: 344px;
+    width: 416px;
+    height: 340px;
     padding: 32px;
     display: flex;
     flex-direction: row;
@@ -101,6 +101,9 @@ a {
     border-radius: 10px;
 }
 
+.loginbox[QR='false'] .QRsection {
+    display: none;
+}
 .heading {
     text-align: center;
     font-size: 24px;

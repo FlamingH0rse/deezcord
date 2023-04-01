@@ -44,8 +44,7 @@ ipcRenderer.on('frontend', (event, d) => {
         html.maximize.innerHTML = d.title == 'maximized' ? '❐' : '☐'
         html.loginbox.style.width = d.title == 'maximized' ? '720px' : '416px'
         html.loginbox.style.height = d.title == 'maximized' ? '344px' : '340px'
-        let toggleQR = d.title == 'maximized' ? 'true' : 'false'
-        html.loginbox?.setAttribute('QR', toggleQR)
+        html.loginbox?.setAttribute('QR', d.title == 'maximized' ? 'true' : 'false')
     }
 })
 window.addEventListener('load', async () => {
