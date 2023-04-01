@@ -82,12 +82,12 @@ app.whenReady().then(async () => {
     // Simulate auto update for now
     createLoadingWindow()
    
-    // checking for updates
+    // Checking for updates
     await sleep(3000)
     
     // Starting
     await connectDiscord()
-    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), app.getPath('appData'))
+    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), path.join(app.getPath('appData'), 'deezcord'))
 
     createWindow()
     loadingWindow.close()

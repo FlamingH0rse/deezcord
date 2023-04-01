@@ -1,6 +1,6 @@
 const { ipcRenderer } = require('electron')
 module.exports = {
-    APP_NAME: 'Deezcord',
+    APP_NAME: 'deezcord',
     toBackend: async function (obj) {
         return await ipcRenderer.invoke('backend', obj)
     },

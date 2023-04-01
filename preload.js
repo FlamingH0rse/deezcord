@@ -1,10 +1,14 @@
 const { ipcRenderer, shell } = require('electron')
 const path = require('path')
+
 let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
-let { getAppDataPath } = require(path.join(frontendPath, 'js', 'fs.js'))
+let { getAppDataPath, saveAppData, readAppData } = require(path.join(frontendPath, 'js', 'fs.js'))
 let { renderChannelList, renderGuild, renderMessage } = require(path.join(frontendPath, 'js', 'renderer.js'))
 let { toBackend, APP_NAME } = require(path.join(frontendPath, 'js', 'misc.js'))
-let { lastGuild } = require(path.join(getAppDataPath(), 'app-state.json'))
+
+let appState = readAppData('app-state')
+let discordAuthData = readAppData('discord-auth')
+let { lastGuild, lastClient } = appState
 
 let html = {}
 let titleBarInit = false
@@ -39,6 +43,7 @@ ipcRenderer.on('frontend', (event, d) => {
         html.channeltop.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
+        html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
     }
     if (d.title == 'maximized' || d.title == 'unMaximized') {
         html.maximize.innerHTML = d.title == 'maximized' ? '❐' : '☐'
@@ -69,7 +74,21 @@ window.addEventListener('load', async () => {
         })
     }
     if (window.location.href.split('/').pop() == 'login.html') {
+        if (lastClient && discordAuthData.clients[lastClient].token) return window.location.href = '../app/app.html'
         html.forgottoken.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
         html.createbot.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
+
+        html.loginbutton.addEventListener('click', () => {
+            if (!html.nicknamebox.value || !html.tokenbox.value) return // alert('FILL IT')
+
+            console.log(discordAuthData)
+            discordAuthData.clients[html.nicknamebox.value] = { token: html.tokenbox.value }
+            appState.lastClient = html.nicknamebox.value
+
+            saveAppData('discord-auth', discordAuthData)
+            saveAppData('app-state', appState)
+
+            window.location.href = '../app/app.html'
+        })
     }
 })
