@@ -10,6 +10,12 @@ html,
     padding: 0;
 }
 
+/* elements */
+a {
+    text-decoration: none;
+    color: rgb(157, 158, 243);
+}
+
 /* wrapper */
 
 .wrapper {
@@ -115,6 +121,7 @@ html,
     color: #B0B5BC;
     margin-top: 20px;
 }
+
 .inputbox {
     background-color: #1E1F22;
     display: flex;
@@ -133,10 +140,12 @@ html,
     flex-grow: 1;
     flex-shrink: 1;
 }
+
 .forgottoken {
     width: 100%;
     font-size: 14px;
 }
+
 .loginbutton {
     background-color: #5865F2;
     width: 100%;
@@ -163,17 +172,26 @@ html,
 }
 
 .loginsection {
-    width: 416px;
+    width: 414px;
     height: 340px;
 }
 
 .QRsection {
-    margin: auto;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
 }
+
 .notarickroll {
-    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 20px;
     margin-bottom: 32px;
-    background-color: white;
     width: 176px;
     height: 176px;
+
+    border-radius: 10px;
 }
