@@ -75,7 +75,6 @@ a {
 
 #deez {
     margin-left: 5px;
-
     flex-grow: 0;
     flex-shrink: 0;
 }
@@ -190,11 +189,9 @@ a {
     display: block;
     margin-left: auto;
     margin-right: auto;
-
     margin-top: 20px;
     margin-bottom: 32px;
     width: 176px;
     height: 176px;
-
     border-radius: 10px;
 }
