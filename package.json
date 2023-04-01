@@ -1,7 +1,7 @@
 {
-  "name": "placeholder-bot",
+  "name": "deezcord",
   "version": "1.0.0",
-  "description": "Discord bot made by flaming",
+  "description": "Deezcord Client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
