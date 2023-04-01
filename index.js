@@ -84,7 +84,7 @@ app.whenReady().then(async () => {
     await sleep(3000)
     
     // Starting
-    // await connectDiscord()
+    await connectDiscord()
     await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), app.getPath('appData'))
 
     createWindow()
