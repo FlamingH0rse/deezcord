@@ -135,12 +135,21 @@ html,
 
 .guildIcon {
     cursor: pointer;
-
     width: 48px;
     height: 48px;
     border-radius: 50%;
 }
 
+.guildIcon[src='null'] {
+    color: white;
+    font-family: gg sans;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #313338;
+}
 .guildIcon:hover {
     animation: guildHover 0.25s forwards;
 }

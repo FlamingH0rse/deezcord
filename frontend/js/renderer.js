@@ -61,9 +61,9 @@ let renderChannelList = function (html, c, guildID) {
 let renderGuild = function (html, g) {
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
-    newGuild.innerHTML =
-        `<img class="guildIcon" id="${g.id}" src="${g.avatar}"></img>
-        <div class="guildName" style="display: none;">${g.name}</div>`
+    if (g.icon != null) newGuild.innerHTML = `<img class="guildIcon" id="${g.id}" src="${g.icon}">`
+    else newGuild.innerHTML = `<div class="guildIcon" id="${g.id}" src="${g.icon}">${g.name.split(' ').map(w => w.split('').shift()).join('')}</div>`
+    
     html.guildlist.append(newGuild)
     newGuild.children[0].addEventListener('click', async e => {
         appState.lastGuild = g.id

@@ -103,7 +103,7 @@ app.whenReady().then(async () => {
                 return {
                     name: g.name,
                     id: g.id,
-                    avatar: g.iconURL()
+                    icon: g.iconURL()
                 }
             })
             return res
