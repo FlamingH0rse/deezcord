@@ -1,5 +1,5 @@
-const { ipcRenderer, shell } = require('electron')
 const path = require('path')
+const { ipcRenderer, shell } = require('electron')
 
 let frontendPath = path.join(window.location.pathname.slice(1), '..', '..')
 let { getAppDataPath, saveAppData, readAppData } = require(path.join(frontendPath, 'js', 'fs.js'))
@@ -44,6 +44,7 @@ ipcRenderer.on('frontend', (event, d) => {
         html.channeltopname.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
+        html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
         html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
     }
     if (d.title == 'maximized' || d.title == 'unMaximized') {

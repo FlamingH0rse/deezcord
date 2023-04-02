@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="img-src 'self'  http://cdn.discordapp.com; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' data: https:; script-src 'self'">
 
     <script src="../libs/jquery-3.6.1.min.js"></script>
     <link href="../libs/fonts/fonts.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                         <div class="othertopicons"
                             style="-webkit-mask: url(../assets/pinned_messages.svg) no-repeat center; mask: url(../assets/pinned_messages.svg) no-repeat center;">
                         </div>
-                        <div class="othertopicons"
+                        <div class="othertopicons" id="memberlisttoggle"
                             style="-webkit-mask: url(../assets/member_list_toggle.svg) no-repeat center; mask: url(../assets/member_list_toggle.svg) no-repeat center;">
                         </div>
                         <div class="othertopicons" id="help"

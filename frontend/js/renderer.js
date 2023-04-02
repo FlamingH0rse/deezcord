@@ -1,6 +1,7 @@
 const { toBackend, formatDate, APP_NAME } = require('./misc.js')
 const { getAppDataPath, saveAppData } = require('./fs.js')
 const path = require('path')
+const twemoji = require('twemoji')
 const appState = require(path.join(getAppDataPath(), 'app-state.json'))
 
 let renderUserList = function (html, u) {
@@ -14,6 +15,10 @@ let renderUserList = function (html, u) {
 
 let renderMessage = function (html, m) {
     let newMessage = document.createElement('div')
+    m.content = m.content.replace(/\n/g, '<br />')
+    console.log(m.content)
+    m.content = twemoji.parse(m.content)
+    console.log(m.content)
     newMessage.classList.add('message')
     newMessage.innerHTML =
         `<img class="authorAvatar" src="${m.author.avatar}">
@@ -21,18 +26,17 @@ let renderMessage = function (html, m) {
             <div class="uppercmp">
                 <p class="authorName selectable" id="${m.author.id}">${m.author.username}</p>
                 ${m.author.bot ? `<div class="botBadge">BOT</div>` : ``}
-                <p class="timeStamp">${formatDate(new Date(m.createdAt))}</p>
+                <p class="timeStamp" id="${m.createdAt}">${formatDate(new Date(m.createdAt))}</p>
             </div>
             <p class="messagecontent selectable" id="${m.id}">${m.content}</p>
         </div>`
-    //console.log(document.querySelector('.msgcontainer').children[0]?.querySelector('.authorName').id, m.author.id)
-    if (html.msgcontainer.lastChild?.querySelector('.authorName')?.id == m.author.id || html.msgcontainer.lastChild?.querySelector('.messagecontent').getAttribute('authorid') == m.author.id) {
+
+    if ((html.msgcontainer.lastChild?.querySelector('.authorName')?.id == m.author.id || html.msgcontainer.lastChild?.querySelector('.messagecontent').getAttribute('authorid') == m.author.id) && m.createdAt - html.msgcontainer.lastChild?.querySelector('.timeStamp').id < 7 * 60 * 1000) {
         newMessage.classList.replace('message', 'messagecont')
         newMessage.innerHTML =
-            `<p class="timeStamp" hidden>${formatDate(new Date(m.createdAt))}</p>
-            <p class="messagecontent" id="${m.id}" authorid="${m.author.id}">${m.content}</p>`
+            `<p class="timeStamp" id="${m.createdAt}" hidden>${formatDate(new Date(m.createdAt))}</p>
+            <p class="messagecontent selectable" id="${m.id}" authorid="${m.author.id}">${m.content}</p>`
     }
-
     html.msgcontainer.append(newMessage)
 }
 
@@ -42,7 +46,7 @@ let renderChannelList = function (html, c, guildID) {
         newChannel.classList.add('channel')
         newChannel.innerHTML =
             `<img class="channelIcon" src="../assets/channel.svg">
-            <p class="channelName" id="${c.id}">${c.name}</p>`
+            <div class="channelName" id="${c.id}">${c.name}</div>`
         html.channellist.append(newChannel)
         newChannel.addEventListener('click', async e => {
             appState.cachedGuilds[guildID] = c.id

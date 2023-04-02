@@ -16,6 +16,7 @@ html,
     -webkit-user-select: text;
     user-select: text;
 }
+
 /* wrapper */
 
 .wrapper {
@@ -206,7 +207,7 @@ html,
 }
 
 .channellisttop:hover {
-    opacity: 0.97
+    background-color: #34363B;
 }
 
 .channeltop {
@@ -253,6 +254,7 @@ html,
     background-color: #2B2D31;
     width: 240px;
     padding-top: 12px;
+
     flex-shrink: 0;
     flex-grow: 0;
     font-family: gg sans;
@@ -266,13 +268,12 @@ html,
     display: flex;
     flex-direction: column;
     align-items: center;
-
     overflow-y: scroll;
     height: 1px;
 }
 
 .channellist:hover::-webkit-scrollbar-thumb {
-    background: whitesmoke;
+    background-color: #1A1B1E;
 }
 
 .channellist::-webkit-scrollbar {
@@ -289,24 +290,25 @@ html,
 .channel {
     cursor: pointer;
     flex-shrink: 0;
-
     color: #96989D;
-    width: 224px;
+    width: calc(100% - 8px);
     height: 34px;
     border-radius: 4px;
-    margin-left: 16px;
+    margin-left: 8px;
+    padding-left: 8px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    
-
-    user-select: none;
+    align-self: flex-start;
+    flex-direction: row;
 }
 
 .channelName {
+    flex-grow: 1;
+    flex-shrink: 1;
     font-size: 16px;
     line-height: 20px;
     margin-left: 6px;
-    width: 142px;
 }
 
 .channel:hover {
@@ -316,7 +318,6 @@ html,
 
 .category {
     flex-shrink: 0;
-
     user-select: none;
     color: #7B7F85;
     width: 232px;
@@ -388,6 +389,7 @@ html,
     flex-direction: column;
     height: 1px;
     overflow-y: scroll;
+    margin-right: 4px;
     font-family: gg sans;
     background-color: #313338;
     flex-grow: 1;
@@ -395,12 +397,14 @@ html,
 }
 
 .msgcontainer::-webkit-scrollbar {
-    width: 5px;
+    background-color: #2B2D31;
+    border-radius: 8px;
+    width: 8px;
 }
 
 .msgcontainer::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: whitesmoke;
+    background-color: #1A1B1E;
+    border-radius: 8px;
 }
 
 /* the messages itself */
@@ -446,13 +450,13 @@ html,
     font-size: 10px;
     font-family: gg sans;
 }
+
 .timeStamp {
     font: gg sans;
     color: gray;
-
     margin-left: 6px;
-
-    font-size: 16px;
+    font-size: 12px;
+    align-self: center;
 }
 
 .authorAvatar {
@@ -468,8 +472,13 @@ html,
     color: #DBDEE1;
     font-size: 16px;
     word-break: break-all;
-
     flex-grow: 1;
+}
+
+.emoji {
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
 }
 
 .messagecont {
@@ -483,9 +492,8 @@ html,
     padding-right: 16px;
     margin-left: 16px;
     margin-right: 16px;
-    margin-top: 30px;
     margin-bottom: 22px;
-    border-radius: 5px;
+    border-radius: 8px;
     height: 44px;
 }
 
@@ -498,6 +506,7 @@ html,
 }
 
 #inputbox {
+    font-size: 16px;
     font-family: gg sans;
     color: white;
     background-color: transparent;
