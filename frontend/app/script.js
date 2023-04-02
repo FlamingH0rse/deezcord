@@ -1,3 +1,3 @@
 $(() => {
-    $('.status').hide()
+    $("#loadOverlay").css("display", "none");
 })

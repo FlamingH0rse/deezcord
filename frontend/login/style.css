@@ -103,6 +103,7 @@ a {
 .loginbox[QR='false'] .QRsection {
     display: none;
 }
+
 .heading {
     text-align: center;
     font-size: 24px;
@@ -168,6 +169,7 @@ a {
 .loginbutton:hover {
     background-color: #4752C4;
 }
+
 .register {
     color: #7D838B;
     font-size: 14px

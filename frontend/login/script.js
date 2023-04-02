@@ -1,3 +1,3 @@
 $(() => {
-    
+    $("#loadOverlay").css("display", "none");
 })
