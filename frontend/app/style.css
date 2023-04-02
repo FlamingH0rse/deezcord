@@ -471,6 +471,10 @@ html,
     flex-grow: 1;
 }
 
+.messagecont {
+    padding-left: 72px;
+}
+
 /* where u can type messages */
 .inputsection {
     background-color: #424549;
@@ -478,6 +482,7 @@ html,
     padding-right: 16px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-top: 30px;
     margin-bottom: 22px;
     border-radius: 5px;
     height: 44px;

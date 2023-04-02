@@ -77,7 +77,7 @@ window.addEventListener('load', async () => {
         html.help.addEventListener('click', () => shell.openExternal('https://github.com/FlamingH0rse/deezcord'))
     }
     if (window.location.href.split('/').pop() == 'login.html') {
-        if (lastClient && discordAuthData.clients[lastClient].token) return window.location.href = '../app/app.html'
+        if (lastClient && discordAuthData.clients[lastClient]?.token) return window.location.href = '../app/app.html'
         html.forgottoken.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
         html.createbot.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
 

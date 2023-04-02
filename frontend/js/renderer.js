@@ -25,15 +25,15 @@ let renderMessage = function (html, m) {
             </div>
             <p class="messagecontent selectable" id="${m.id}">${m.content}</p>
         </div>`
-    /*    
-    if (html.msgcontainer.lastChild.querySelector('.authorName').id == m.author.id) {
+    //console.log(document.querySelector('.msgcontainer').children[0]?.querySelector('.authorName').id, m.author.id)
+    if (html.msgcontainer.lastChild?.querySelector('.authorName')?.id == m.author.id || html.msgcontainer.lastChild?.querySelector('.messagecontent').getAttribute('authorid') == m.author.id) {
         newMessage.classList.replace('message', 'messagecont')
-        newMessage.innerHTML = 
+        newMessage.innerHTML =
             `<p class="timeStamp" hidden>${formatDate(new Date(m.createdAt))}</p>
-            <p class="messagecontent" id="${m.id}" data-authorid="${m.author.id}">${m.content}</p>`
+            <p class="messagecontent" id="${m.id}" authorid="${m.author.id}">${m.content}</p>`
     }
-    */
-    html.msgcontainer.prepend(newMessage)
+
+    html.msgcontainer.append(newMessage)
 }
 
 let renderChannelList = function (html, c, guildID) {
@@ -63,7 +63,7 @@ let renderGuild = function (html, g) {
     newGuild.classList.add('guild')
     if (g.icon != null) newGuild.innerHTML = `<img class="guildIcon" id="${g.id}" src="${g.icon}">`
     else newGuild.innerHTML = `<div class="guildIcon" id="${g.id}" src="${g.icon}">${g.name.split(' ').map(w => w.split('').shift()).join('')}</div>`
-    
+
     html.guildlist.append(newGuild)
     newGuild.children[0].addEventListener('click', async e => {
         appState.lastGuild = g.id

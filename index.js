@@ -150,6 +150,7 @@ app.whenReady().then(async () => {
             let res = {}
 
             channel.messages.fetch({ limit: 100 }).then(messages => {
+                messages.reverse()
                 res.messages = messages.map(m => {
                     return {
                         id: m.id,
