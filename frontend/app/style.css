@@ -28,7 +28,7 @@ html,
 /* titlebar */
 
 .titlebar {
-    background-color: #1e2124;
+    background-color: #1E1F22;
     height: 22px;
     -webkit-app-region: drag;
     -webkit-user-select: none;
@@ -90,7 +90,7 @@ html,
 
 /* servers list */
 .guildlist {
-    background-color: #202225;
+    background-color: #1E1F22;
     flex-grow: 0;
     flex-shrink: 0;
     width: 72px;
@@ -196,7 +196,7 @@ html,
 .channellisttop {
     color: white;
     font-family: gg sans;
-    background-color: #2F3136;
+    background-color: #2B2D31;
     width: 224px;
     padding-left: 16px;
     display: flex;
@@ -215,7 +215,7 @@ html,
     font-family: gg sans;
     padding-left: 8px;
     padding-right: 8px;
-    background-color: #36393F;
+    background-color: #313338;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -229,7 +229,7 @@ html,
 }
 
 .othertopicons {
-    background-color: #7B7F85;
+    background-color: #B5BAC1;
     width: 24px;
     height: 24px;
     margin-left: 8px;
@@ -250,8 +250,9 @@ html,
 
 /* leftside */
 .leftside {
-    background-color: #2F3136;
+    background-color: #2B2D31;
     width: 240px;
+    padding-top: 12px;
     flex-shrink: 0;
     flex-grow: 0;
     font-family: gg sans;
@@ -293,10 +294,10 @@ html,
     width: 224px;
     height: 34px;
     border-radius: 4px;
-    margin-left: 8px;
+    margin-left: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    
 
     user-select: none;
 }
@@ -338,7 +339,7 @@ html,
 }
 
 .status {
-    background-color: #292B2F;
+    background-color: #232428;
     height: 52px;
     filter: drop-shadow(0 1px #36393F);
 
@@ -351,7 +352,7 @@ html,
 
 .profile {
     color: white;
-    background-color: #292B2F;
+    background-color: #232428;
     height: 52px;
     display: flex;
     flex-direction: row;
@@ -375,7 +376,7 @@ html,
 
 /* middlepart */
 .middlepart {
-    background-color: #36393e;
+    background-color: #313338;
     flex-grow: 1;
     flex-shrink: 1;
     display: flex;
@@ -388,7 +389,7 @@ html,
     height: 1px;
     overflow-y: scroll;
     font-family: gg sans;
-    background-color: #36393F;
+    background-color: #313338;
     flex-grow: 1;
     flex-shrink: 1;
 }
@@ -477,7 +478,7 @@ html,
 
 /* where u can type messages */
 .inputsection {
-    background-color: #424549;
+    background-color: #383A40;
     display: flex;
     padding-right: 16px;
     margin-left: 16px;
@@ -514,7 +515,7 @@ html,
     display: flex;
     flex-direction: column;
 
-    background-color: #2F3136;
+    background-color: #2B2D31;
     width: 240px;
     flex-shrink: 0;
     flex-grow: 0;
