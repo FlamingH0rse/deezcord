@@ -20,7 +20,7 @@ let renderMessage = function (html, m) {
         <div class="msgcompartment">
             <div class="uppercmp">
                 <p class="authorName selectable" id="${m.author.id}">${m.author.username}</p>
-                ${m.author.bot ? `<p class="botBadge">BOT</p>` : ``}
+                ${m.author.bot ? `<div class="botBadge">BOT</div>` : ``}
                 <p class="timeStamp">${formatDate(new Date(m.createdAt))}</p>
             </div>
             <p class="messagecontent selectable" id="${m.id}">${m.content}</p>
