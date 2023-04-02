@@ -194,9 +194,34 @@ html,
 }
 
 .channeltop {
+    color: white;
+    font-size: 16px;
+    font-family: gg sans;
+    padding-left: 8px;
+    padding-right: 8px;
     background-color: #36393F;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     flex-grow: 1;
     flex-shrink: 1
+}
+
+.channeltopname {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.othertopicons {
+    background-color: #7B7F85;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.othertopicons:hover {
+    background-color: white;
 }
 
 /* bottom part of main */

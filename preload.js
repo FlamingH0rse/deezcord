@@ -40,8 +40,8 @@ ipcRenderer.on('frontend', (event, d) => {
     runOnceRefreshHtmlElements()
     if (d.title == 'navChannelSuccess') {
         html.inputbox.setAttribute('placeholder', `Message #${d.channelName}`)
-        html.channeltop.id = d.channelID
-        html.channeltop.innerHTML = d.channelName
+        html.channeltopname.id = d.channelID
+        html.channeltopname.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
         html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
@@ -74,6 +74,7 @@ window.addEventListener('load', async () => {
             if (lastGuild && html[lastGuild]) html[lastGuild].click()
             else html.guildlist.querySelectorAll('.guildIcon')[0].click()
         })
+        html.help.addEventListener('click', () => shell.openExternal('https://github.com/FlamingH0rse/deezcord'))
     }
     if (window.location.href.split('/').pop() == 'login.html') {
         if (lastClient && discordAuthData.clients[lastClient].token) return window.location.href = '../app/app.html'

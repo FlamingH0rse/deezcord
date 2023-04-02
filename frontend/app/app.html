@@ -7,14 +7,16 @@
 
     <script src="../libs/jquery-3.6.1.min.js"></script>
     <link href="../libs/fonts/fonts.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js"></script>
     <title>Discord</title>
 </head>
 
 <body>
-    <div id="loadOverlay" style="background-color:#36393F; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
+    <div id="loadOverlay"
+        style="background-color:#36393F; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+    </div>
     <div class="wrapper">
         <header class="titlebar">
             <button id="close">X</button>
@@ -31,7 +33,27 @@
             <div class="guildsection">
                 <div class="toppart">
                     <div class="channellisttop"></div>
-                    <div class="channeltop"></div>
+                    <div class="channeltop">
+                        <img class="channelIcon" src="../assets/channel.svg"
+                            style="width:24px; height:24px; margin-left:8px; margin-right:8px;">
+                        <div class="channeltopname"></div>
+                        <div class="othertopicons"
+                            style="-webkit-mask: url('../assets/thread.svg') no-repeat center; mask: url('../assets/thread.svg') no-repeat center;">
+                        </div>
+                        <div class="othertopicons"
+                            style="-webkit-mask: url(../assets/notification_settings.svg) no-repeat center; mask: url(../assets/notification_settings.svg) no-repeat center;">
+                        </div>
+                        <div class="othertopicons"
+                            style="-webkit-mask: url(../assets/pinned_messages.svg) no-repeat center; mask: url(../assets/pinned_messages.svg) no-repeat center;">
+                        </div>
+                        <div class="othertopicons"
+                            style="-webkit-mask: url(../assets/member_list_toggle.svg) no-repeat center; mask: url(../assets/member_list_toggle.svg) no-repeat center;">
+                        </div>
+                        <div class="othertopicons" id="help"
+                            style="-webkit-mask: url(../assets/top_help.svg) no-repeat center; mask: url(../assets/top_help.svg) no-repeat center;">
+                        </div>
+
+                    </div>
                 </div>
                 <div class="bottompart">
                     <div class="leftside">
