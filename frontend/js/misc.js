@@ -11,5 +11,13 @@ module.exports = {
         else date = d.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })
         let time = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         return date + ' ' + time
+    },
+    validateJson: function (jsonstr) {
+        try {
+            let parsedJson = JSON.parse(jsonstr)
+            return parsedJson
+        } catch (e) {
+            return false
+        }
     }
 }

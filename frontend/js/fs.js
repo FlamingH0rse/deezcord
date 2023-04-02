@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { APP_NAME } = require('./misc.js')
+const { validateJson, APP_NAME } = require('./misc.js')
 // Don't put DOM elements outside functions
 
 function getAppDataPath() {
@@ -48,7 +48,7 @@ function resolveAppData(frontPath, appDataDir) {
                 let filePath = path.join(appDataDir, `${file}.json`)
                 let fileExists = fs.existsSync(filePath)
 
-                if (fileExists && typeof require(filePath) == 'object' && Object.keys(appDataTemplate[file]).toString() == Object.keys(require(filePath)).toString()) {
+                if (fileExists && typeof validateJson(readAppData(file, false)) == 'object' && Object.keys(appDataTemplate[file]).toString() == Object.keys(require(filePath)).toString()) {
                     console.log(`${filePath} already exists, skipping...`)
                     res()
                 }
@@ -71,12 +71,15 @@ function resolveAppData(frontPath, appDataDir) {
         resolve()
     })
 }
-function readAppData(filename) {
+function readAppData(filename, parseAsJson) {
+    if (parseAsJson == undefined) parseAsJson = true
+
     let filePath = path.join(getAppDataPath(), `${filename}.json`)
     fs.chmodSync(filePath, 0o400)
     try {
         let data = fs.readFileSync(filePath, 'utf8')
-        return JSON.parse(data)
+        if (parseAsJson == true) return JSON.parse(data)
+        else return data
     } catch (e) {
         console.log(e)
     }
