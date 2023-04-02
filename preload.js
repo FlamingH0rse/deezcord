@@ -77,21 +77,31 @@ window.addEventListener('load', async () => {
         html.help.addEventListener('click', () => shell.openExternal('https://github.com/FlamingH0rse/deezcord'))
     }
     if (window.location.href.split('/').pop() == 'login.html') {
-        if (lastClient && discordAuthData.clients[lastClient]?.token) return window.location.href = '../app/app.html'
+        if (lastClient && discordAuthData.clients[lastClient]?.token) {
+            html.loadOverlay.style.display = 'block'
+            let login = await toBackend({ title: 'loginDiscord', token: discordAuthData.clients[lastClient]?.token })
+            if (login == 'loginSuccess') return window.href.location = window.location.href = '../app/app.html'
+            html.loadOverlay.style.display = 'none'
+        }
         html.forgottoken.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
         html.createbot.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
 
-        html.loginbutton.addEventListener('click', () => {
-            if (!html.nicknamebox.value || !html.tokenbox.value) return // alert('FILL IT')
+        html.loginbutton.addEventListener('click', async () => {
+            if (!html.nicknamebox.value) return html.nicknameheader.style.color = 'red'
+            if (!html.tokenbox.value) return html.tokenheader.style.color = 'red'
 
-            console.log(discordAuthData)
             discordAuthData.clients[html.nicknamebox.value] = { token: html.tokenbox.value }
             appState.lastClient = html.nicknamebox.value
 
-            saveAppData('discord-auth', discordAuthData)
-            saveAppData('app-state', appState)
-
-            window.location.href = '../app/app.html'
+            html.loadOverlay.style.display = 'block'
+            let login = await toBackend({ title: 'loginDiscord', token: html.tokenbox.value })
+            if (login == 'loginSuccess') {
+                saveAppData('discord-auth', discordAuthData)
+                saveAppData('app-state', appState)
+                return window.href.location = window.location.href = '../app/app.html'
+            } else {
+                // Wrong token buddy :clown:
+            }
         })
     }
 })
