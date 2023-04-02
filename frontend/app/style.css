@@ -8,8 +8,14 @@ html,
 * {
     margin: 0;
     padding: 0;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
+.selectable {
+    -webkit-user-select: text;
+    user-select: text;
+}
 /* wrapper */
 
 .wrapper {
@@ -150,6 +156,7 @@ html,
     justify-content: center;
     background-color: #313338;
 }
+
 .guildIcon:hover {
     animation: guildHover 0.25s forwards;
 }
