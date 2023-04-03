@@ -103,6 +103,8 @@ html,
 }
 
 .discordlogo {
+    color: #DBDEE1;
+    display: flex;
     border-radius: 50%;
     cursor: pointer;
 
@@ -120,6 +122,13 @@ html,
 
 .discordlogo:hover {
     animation: discordlogoHover 0.25s forwards;
+}
+
+.dlogoimage {
+    filter: invert(90%) sepia(5%) saturate(142%) hue-rotate(169deg) brightness(101%) contrast(88%);
+    display: block;
+    margin: auto;
+    justify-content: center;
 }
 
 .guildseparator {
