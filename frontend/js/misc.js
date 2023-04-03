@@ -2,7 +2,6 @@ const { ipcRenderer } = require('electron');
 const twemoji = require('twemoji');
 
 function hexToRgb(hex, isRole) {
-    console.log(hex)
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     let res = [1, 2, 3].map(i => parseInt(result[i], 16)).join(',')
     if (isRole) res = '88,101,242'
