@@ -18,8 +18,9 @@ let renderUserList = function (u) {
 
 let renderMessage = function (m) {
     runOnceRefreshHtmlElements(html)
+    console.log('OK BUDD')
     let newMessage = document.createElement('div')
-    m.content = m.content.replace(/\n/g, '<br />')
+    m.content = m.content.replace(/</g, '&lt').replace(/>/g, '&gt').replace(/\n/g, '<br />')
     m.content = twemoji.parse(m.content)
     newMessage.classList.add('message')
     newMessage.innerHTML =

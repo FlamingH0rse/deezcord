@@ -3,7 +3,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 //discord:
 const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
 
 const path = require('path')
 
@@ -83,6 +83,21 @@ client.once('ready', () => {
     discordConnected = true
 });
 
+client.on('messageCreate', message => {
+    mainWindow.webContents.send('frontend', {
+        title: 'newMessage',
+        channelID: message.channel.id,
+        id: message.id,
+        createdAt: message.createdTimestamp,
+        content: message.content,
+        author: {
+            id: message.author.id,
+            bot: message.author.bot,
+            username: message.author.username,
+            avatar: message.author.displayAvatarURL()
+        }
+    })
+})
 app.whenReady().then(async () => {
     // Simulate auto update for now
     // Checking for updates
@@ -199,7 +214,7 @@ app.whenReady().then(async () => {
             })
         }
         if (d.title == 'sendMessage') {
-            
+            client.channels.cache.get(d.channelID).send(d.message)
         }
     })
 

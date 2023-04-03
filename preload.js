@@ -61,6 +61,15 @@ ipcRenderer.on('frontend', (event, d) => {
         html.loginbox.style.height = d.title == 'maximized' ? '344px' : '340px'
         html.loginbox?.setAttribute('QR', d.title == 'maximized' ? 'true' : 'false')
     }
+    if (d.title == 'newMessage') {
+        console.log(d.channelID, html.channeltopname.id)
+        if (d.channelID == html.channeltopname.id) {
+            html.msgcontainer.lastChild.style['margin-bottom'] = '0px'
+            renderMessage(d)
+            html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
+            html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
+        }
+    }
 })
 window.addEventListener('load', async () => {
     runOnceRefreshHtmlElements()
@@ -81,6 +90,13 @@ window.addEventListener('load', async () => {
             console.log(lastGuild)
             if (lastGuild && html[lastGuild]) html[lastGuild].click()
             else html.guildlist.querySelectorAll('.guildIcon')[0].click()
+        })
+        html.inputbox.addEventListener("keyup", ({ key }) => {
+            if (!html.inputbox.value.replace(/ /g, '')) return
+            if (key === "Enter") {
+                toBackend({ title: 'sendMessage', message: html.inputbox.value, channelID: html.channeltopname.id })
+                html.inputbox.value = ''
+            }
         })
         html.help.addEventListener('click', () => shell.openExternal('https://github.com/FlamingH0rse/deezcord'))
     }
