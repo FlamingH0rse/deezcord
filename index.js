@@ -198,6 +198,9 @@ app.whenReady().then(async () => {
                 mainWindow.webContents.send('frontend', res)
             })
         }
+        if (d.title == 'sendMessage') {
+            
+        }
     })
 
     mainWindow.on('resize', () => {
