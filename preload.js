@@ -43,10 +43,18 @@ ipcRenderer.on('frontend', (event, d) => {
         html.channeltopname.id = d.channelID
         html.channeltopname.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
+        
+        // Render the messages
         d.messages.forEach(m => renderMessage(html, m))
+
+        // Weird gaps on the first and last elements
         html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
         html.channellist.children[0].style['margin-top'] = '12px'
+        
         html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
+        
+        Array.from(html.channellist.children).forEach(c => c.classList.remove('currentChannel'))
+        Array.from(html.channellist.children).filter(c => c.id == d.channelID)[0].classList.add('currentChannel')
     }
     if (d.title == 'maximized' || d.title == 'unMaximized') {
         html.maximize.innerHTML = d.title == 'maximized' ? '❐' : '☐'

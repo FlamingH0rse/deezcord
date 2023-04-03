@@ -16,9 +16,7 @@ let renderUserList = function (html, u) {
 let renderMessage = function (html, m) {
     let newMessage = document.createElement('div')
     m.content = m.content.replace(/\n/g, '<br />')
-    console.log(m.content)
     m.content = twemoji.parse(m.content)
-    console.log(m.content)
     newMessage.classList.add('message')
     newMessage.innerHTML =
         `<img class="authorAvatar" src="${m.author.avatar}">
@@ -44,9 +42,10 @@ let renderChannelList = function (html, c, guildID) {
     if (c.type == 0) {
         let newChannel = document.createElement('div')
         newChannel.classList.add('channel')
+        newChannel.id = c.id
         newChannel.innerHTML =
             `<img class="channelIcon" src="../assets/channel.svg">
-            <div class="channelName" id="${c.id}">${c.name}</div>`
+            <div class="channelName">${c.name}</div>`
         html.channellist.append(newChannel)
         newChannel.addEventListener('click', async e => {
             appState.cachedGuilds[guildID] = c.id
