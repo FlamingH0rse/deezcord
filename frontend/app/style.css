@@ -254,8 +254,6 @@ html,
 .leftside {
     background-color: #2B2D31;
     width: 240px;
-    padding-top: 12px;
-
     flex-shrink: 0;
     flex-grow: 0;
     font-family: gg sans;
@@ -536,8 +534,8 @@ html,
     flex-grow: 1;
     flex-shrink: 1;
     height: 1px;
-    overflow-y: scroll;
     margin-right: 2px;
+    overflow-y: scroll;
 
     display: flex;
     flex-direction: column;
@@ -548,12 +546,12 @@ html,
 }
 
 .memberslist::-webkit-scrollbar {
-    padding-right: 500px;
+    
     width: 5px;
 }
 
 .memberslist::-webkit-scrollbar-thumb {
-    border-radius: 6px;
+    border-radius: 10px;
     background: transparent;
 }
 
