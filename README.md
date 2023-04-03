@@ -40,9 +40,9 @@ Contributions are welcome! If you'd like to contribute to the project, please fo
 For more info:
 <br/>
 **Discord:**
->flaming#5472
+> flaming#5472
 <br/>
->wort wort wort#1549
+> blaming#1549
 
 ## License
 
