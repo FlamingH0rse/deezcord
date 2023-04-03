@@ -84,6 +84,7 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', message => {
+    console.log('message received')
     mainWindow.webContents.send('frontend', {
         title: 'newMessage',
         channelID: message.channel.id,

@@ -63,12 +63,7 @@ ipcRenderer.on('frontend', (event, d) => {
     }
     if (d.title == 'newMessage') {
         console.log(d.channelID, html.channeltopname.id)
-        if (d.channelID == html.channeltopname.id) {
-            html.msgcontainer.lastChild.style['margin-bottom'] = '0px'
-            renderMessage(d)
-            html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
-            html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
-        }
+        if (d.channelID == html.channeltopname.id) renderMessage(d)
     }
 })
 window.addEventListener('load', async () => {

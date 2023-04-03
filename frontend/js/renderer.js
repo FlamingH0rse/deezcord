@@ -18,7 +18,6 @@ let renderUserList = function (u) {
 
 let renderMessage = function (m) {
     runOnceRefreshHtmlElements(html)
-    console.log('OK BUDD')
     let newMessage = document.createElement('div')
     m.content = m.content.replace(/</g, '&lt').replace(/>/g, '&gt').replace(/\n/g, '<br />')
     m.content = twemoji.parse(m.content)
@@ -44,7 +43,10 @@ let renderMessage = function (m) {
     if (newMessage.querySelector('.messagecontent').textContent.replace(/ /g, '') == '' && Array.from(newMessage.querySelectorAll('.emoji')).length <= 30) {
         Array.from(newMessage.querySelectorAll('.emoji')).forEach(e => { e.style.width = '48px'; e.style.height = '48px' })
     }
+    if (html.msgcontainer.lastChild) html.msgcontainer.lastChild.style['margin-bottom'] = '0px'
     html.msgcontainer.append(newMessage)
+    html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
+    html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
 }
 
 let renderChannelList = function (c, guildID) {
