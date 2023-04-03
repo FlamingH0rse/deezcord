@@ -1,7 +1,8 @@
-const { toBackend, formatDate, APP_NAME, runOnceRefreshHtmlElements } = require('./misc.js')
-const { getAppDataPath, saveAppData } = require('./fs.js')
 const path = require('path')
-const twemoji = require('twemoji')
+
+const { toBackend, formatDate, runOnceRefreshHtmlElements } = require('./misc.js')
+const { getAppDataPath, saveAppData } = require('./fs.js')
+
 const appState = require(path.join(getAppDataPath(), 'app-state.json'))
 
 let html = {}
@@ -19,8 +20,6 @@ let renderUserList = function (u) {
 let renderMessage = function (m) {
     runOnceRefreshHtmlElements(html)
     let newMessage = document.createElement('div')
-    m.content = m.content.replace(/</g, '&lt').replace(/>/g, '&gt').replace(/\n/g, '<br />')
-    m.content = twemoji.parse(m.content)
     newMessage.classList.add('message')
     newMessage.innerHTML =
         `<img class="authorAvatar" src="${m.author.avatar}">

@@ -3,7 +3,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 //discord:
 const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
 
 const path = require('path')
 
@@ -85,6 +85,7 @@ client.once('ready', () => {
 
 client.on('messageCreate', message => {
     console.log('message received')
+    message.content = require('./frontend/js/misc.js').clientParse(client, message.content, message.guildId)
     mainWindow.webContents.send('frontend', {
         title: 'newMessage',
         channelID: message.channel.id,
@@ -199,7 +200,7 @@ app.whenReady().then(async () => {
                     return {
                         id: m.id,
                         createdAt: m.createdTimestamp,
-                        content: m.content,
+                        content: require('./frontend/js/misc.js').clientParse(client, m.content, m.guildId),
                         author: {
                             id: m.author.id,
                             bot: m.author.bot,

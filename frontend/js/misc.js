@@ -1,4 +1,14 @@
-const { ipcRenderer } = require('electron')
+const { ipcRenderer } = require('electron');
+const twemoji = require('twemoji');
+
+function hexToRgb(hex, isRole) {
+    console.log(hex)
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    let res = [1, 2, 3].map(i => parseInt(result[i], 16)).join(',')
+    if (isRole) res = '88,101,242'
+    return res
+
+}
 module.exports = {
     APP_NAME: 'deezcord',
     toBackend: async function (obj) {
@@ -27,5 +37,31 @@ module.exports = {
             else if (elms[i].classList?.length) html[elms[i].classList[0]] = elms[i]
         }
         return html
+    },
+    clientParse: function (client, str, guildID) {
+        let currentGuild = client.guilds.cache.get(guildID)
+        str = str.replace(/</g, '&lt').replace(/>/g, '&gt').replace(/\n/g, '<br />')
+        str = twemoji.parse(str)
+        let userMatches = [...str.matchAll(/&lt@(\d+)&gt/g)]
+        userMatches.forEach(o => {
+            str = str.replace(o[0], `<div class="usermention">@${currentGuild.members.cache.get(o[1])?.nickname || client.users.cache.get(o[1])?.username || o[1]}</div>`)
+        })
+
+        let roleMatches = [...str.matchAll(/&lt@&(\d+)&gt/g)]
+        roleMatches.forEach(o => {
+            let matchRole = currentGuild.roles.cache.get(o[1])
+            str = str.replace(o[0], 
+                `<div class="rolemention" 
+                style=
+                "background-color: rgba(${hexToRgb(matchRole?.hexColor || '#FFFFFF', true)}, 0.1);
+                color: ${matchRole?.hexColor == '#000000' ? '#C9CDFB' :'#FFFFFF'};">
+                @${matchRole?.name || 'deleted-role'}
+                </div>`)
+        })
+        let channelMatches = [...str.matchAll(/&lt#(\d+)&gt/g)]
+        channelMatches.forEach(o => {
+            str = str.replace(o[0], `<div class="channelmention">@${currentGuild.channels.cache.get(o[1])?.name || 'Unknown'}</div>`)
+        })
+        return str
     }
 }

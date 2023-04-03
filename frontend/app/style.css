@@ -124,7 +124,7 @@ html,
     animation: discordlogoHover 0.25s forwards;
 }
 
-.discordlogo:hover > .dlogoimage {
+.discordlogo:hover>.dlogoimage {
     animation: dlogoImageHover 0.25s forwards;
 }
 
@@ -325,6 +325,7 @@ html,
     color: white;
     background-color: #42464D;
 }
+
 .channelName {
     flex-grow: 1;
     flex-shrink: 1;
@@ -505,6 +506,22 @@ html,
     height: 22px;
 }
 
+.usermention, .rolemention, .channelmention {
+    width: max-content;
+    border-radius: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.usermention, .channelmention {
+    background-color: rgba(88, 101, 242, 0.3);
+    color: rgb(201, 205, 251);
+}
+
+.usermention:hover, .channelmention:hover {
+    color: white;
+    background-color: rgba(88, 101, 242, 1);
+}
 .messagecont {
     padding-left: 72px;
 }
@@ -571,7 +588,7 @@ html,
 }
 
 .memberslist::-webkit-scrollbar {
-    
+
     width: 5px;
 }
 
