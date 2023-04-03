@@ -45,6 +45,7 @@ ipcRenderer.on('frontend', (event, d) => {
         html.msgcontainer.innerHTML = ''
         d.messages.forEach(m => renderMessage(html, m))
         html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
+        html.channellist.children[0].style['margin-top'] = '12px'
         html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
     }
     if (d.title == 'maximized' || d.title == 'unMaximized') {

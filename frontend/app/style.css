@@ -253,8 +253,6 @@ html,
 .leftside {
     background-color: #2B2D31;
     width: 240px;
-    padding-top: 12px;
-
     flex-shrink: 0;
     flex-grow: 0;
     font-family: gg sans;
@@ -535,23 +533,23 @@ html,
     flex-grow: 1;
     flex-shrink: 1;
     height: 1px;
+    margin-right: 2px;
     overflow-y: scroll;
-
     display: flex;
     flex-direction: column;
 }
 
 .memberslist:hover::-webkit-scrollbar-thumb {
-    background: whitesmoke;
+    background-color: #1A1B1E;
 }
 
 .memberslist::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
 }
 
 .memberslist::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: transparent;
+    background-color: transparent;
 }
 
 /* the users itself */
