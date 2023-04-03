@@ -442,7 +442,7 @@ html,
 
 .msgcompartment {
     margin-bottom: 3px;
-
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -490,13 +490,16 @@ html,
 }
 
 /* this is where the message gets stored */
+.messagecontentparent {
+    width: 100%;
+}
+
 .messagecontent {
     font: gg sans;
     color: #DBDEE1;
     font-size: 16px;
     word-break: break-all;
     flex-grow: 1;
-
     max-width: 90%;
 }
 
@@ -588,7 +591,10 @@ html,
 }
 
 .memberslist::-webkit-scrollbar {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ffeb44fe0fe0e59797517dec60b34ccbf333db4
     width: 5px;
 }
 

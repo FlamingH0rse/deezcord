@@ -29,7 +29,9 @@ let renderMessage = function (m) {
                 ${m.author.bot ? `<div class="botBadge">BOT</div>` : ``}
                 <p class="timeStamp" id="${m.createdAt}">${formatDate(new Date(m.createdAt))}</p>
             </div>
-            <p class="messagecontent selectable" id="${m.id}">${m.content}</p>
+            <div class="messagecontentparent">
+                <p class="messagecontent selectable" id="${m.id}">${m.content}</p>
+            </div>
         </div>`
 
     if ((html.msgcontainer.lastChild?.querySelector('.authorName')?.id == m.author.id || html.msgcontainer.lastChild?.querySelector('.messagecontent').getAttribute('authorid') == m.author.id) && m.createdAt - html.msgcontainer.lastChild?.querySelector('.timeStamp').id < 7 * 60 * 1000) {
