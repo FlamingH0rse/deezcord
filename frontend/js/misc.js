@@ -19,5 +19,13 @@ module.exports = {
         } catch (e) {
             return false
         }
+    },
+    runOnceRefreshHtmlElements: function (html) {
+        let elms = document.getElementsByTagName('*')
+        for (i in elms) {
+            if (elms[i].id) html[elms[i].id] = elms[i]
+            else if (elms[i].classList?.length) html[elms[i].classList[0]] = elms[i]
+        }
+        return html
     }
 }

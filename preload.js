@@ -18,7 +18,7 @@ function runOnceRefreshHtmlElements() {
         if (elms[i].id) html[elms[i].id] = elms[i]
         else if (elms[i].classList?.length) html[elms[i].classList[0]] = elms[i]
     }
-    if (titleBarInit == false) {
+    if (!titleBarInit) {
         html.minimize.addEventListener('click', () => toBackend({ title: 'minimizeWin' }))
         html.maximize.addEventListener('click', async () => {
             let res = await toBackend({ title: 'maximizeWin' })
@@ -35,6 +35,7 @@ function runOnceRefreshHtmlElements() {
     }
 }
 
+
 ipcRenderer.on('frontend', (event, d) => {
     console.log(d)
     runOnceRefreshHtmlElements()
@@ -43,16 +44,13 @@ ipcRenderer.on('frontend', (event, d) => {
         html.channeltopname.id = d.channelID
         html.channeltopname.innerHTML = d.channelName
         html.msgcontainer.innerHTML = ''
-        
-        // Render the messages
-        d.messages.forEach(m => renderMessage(html, m))
 
-        // Weird gaps on the first and last elements
+        // Render the messages
+        d.messages.forEach(m => renderMessage(m))
         html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
-        html.channellist.children[0].style['margin-top'] = '12px'
-        
+
         html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
-        
+
         Array.from(html.channellist.children).forEach(c => c.classList.remove('currentChannel'))
         Array.from(html.channellist.children).filter(c => c.id == d.channelID)[0].classList.add('currentChannel')
     }
@@ -73,7 +71,7 @@ window.addEventListener('load', async () => {
             <div class="botName">${initInfo.user.username}</div>`
         let renderGuildList = new Promise((res, rej) => {
             for (let g in initInfo.guilds) {
-                renderGuild(html, initInfo.guilds[g])
+                renderGuild(initInfo.guilds[g])
                 runOnceRefreshHtmlElements()
             }
             res()
