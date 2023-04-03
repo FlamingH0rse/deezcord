@@ -591,11 +591,7 @@ html,
 }
 
 .memberslist::-webkit-scrollbar {
-<<<<<<< HEAD
-
-=======
->>>>>>> 2ffeb44fe0fe0e59797517dec60b34ccbf333db4
-    width: 5px;
+    width: 4px;
 }
 
 .memberslist::-webkit-scrollbar-thumb {
