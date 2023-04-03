@@ -231,6 +231,7 @@ html,
 
 .othertopicons {
     background-color: #B5BAC1;
+    cursor: pointer;
     width: 24px;
     height: 24px;
     margin-left: 8px;
@@ -238,7 +239,7 @@ html,
 }
 
 .othertopicons:hover {
-    background-color: white;
+    background-color: white !important;
 }
 
 /* bottom part of main */
@@ -536,21 +537,23 @@ html,
     flex-shrink: 1;
     height: 1px;
     overflow-y: scroll;
+    margin-right: 2px;
 
     display: flex;
     flex-direction: column;
 }
 
 .memberslist:hover::-webkit-scrollbar-thumb {
-    background: whitesmoke;
+    background-color: #1A1B1E;
 }
 
 .memberslist::-webkit-scrollbar {
+    padding-right: 500px;
     width: 5px;
 }
 
 .memberslist::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 6px;
     background: transparent;
 }
 
