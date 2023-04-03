@@ -40,9 +40,8 @@ Contributions are welcome! If you'd like to contribute to the project, please fo
 For more info:
 <br/>
 **Discord:**
-> flaming#5472
-<br/>
-> blaming#1549
+- flaming#5472
+- blaming#1549
 
 ## License
 
