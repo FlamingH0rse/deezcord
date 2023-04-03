@@ -49,12 +49,13 @@ module.exports = {
         let roleMatches = [...str.matchAll(/&lt@&(\d+)&gt/g)]
         roleMatches.forEach(o => {
             let matchRole = currentGuild.roles.cache.get(o[1])
-            str = str.replace(o[0], 
+            if (!matchRole) str = '@deleted-role';
+            else str = str.replace(o[0], 
                 `<div class="rolemention" 
                 style=
-                "background-color: rgba(${hexToRgb(matchRole?.hexColor || '#FFFFFF', true)}, 0.1);
-                color: ${matchRole?.hexColor == '#000000' ? '#C9CDFB' :'#FFFFFF'};">
-                @${matchRole?.name || 'deleted-role'}
+                "background-color: rgba(${hexToRgb(matchRole.hexColor, true)}, 0.1);
+                color: ${matchRole.hexColor};">
+                @${matchRole.name}
                 </div>`)
         })
         let channelMatches = [...str.matchAll(/&lt#(\d+)&gt/g)]
