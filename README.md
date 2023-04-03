@@ -4,7 +4,7 @@ Deezcord is an ElectronJS application that allows you to log in as a Discord bot
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/FlamingH0rse/discord.git`
+1. Clone the repository: `git clone https://github.com/FlamingH0rse/deezcord.git`
 2. Install dependencies: `npm install`
 3. Create a new Discord bot [here](https://discord.com/developers/applications) and get the bot token.
 4. ~~Create a .env file in the project directory and add the following:~~
