@@ -50,7 +50,7 @@ html,
     width: 28px;
     border: none;
     background: none;
-    color: #9A9795;
+    color: #B5BAC1;
     cursor: pointer;
 }
 
@@ -103,6 +103,8 @@ html,
 }
 
 .discordlogo {
+    color: #DBDEE1;
+    display: flex;
     border-radius: 50%;
     cursor: pointer;
 
@@ -120,6 +122,17 @@ html,
 
 .discordlogo:hover {
     animation: discordlogoHover 0.25s forwards;
+}
+
+.discordlogo:hover > .dlogoimage {
+    animation: dlogoImageHover 0.25s forwards;
+}
+
+.dlogoimage {
+    filter: invert(90%) sepia(5%) saturate(142%) hue-rotate(169deg) brightness(101%) contrast(88%);
+    display: block;
+    margin: auto;
+    justify-content: center;
 }
 
 .guildseparator {
@@ -172,6 +185,12 @@ html,
     100% {
         background-color: #5865F2;
         border-radius: 30%;
+    }
+}
+
+@keyframes dlogoImageHover {
+    100% {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(284deg) brightness(104%) contrast(102%);
     }
 }
 
@@ -476,6 +495,8 @@ html,
     font-size: 16px;
     word-break: break-all;
     flex-grow: 1;
+
+    max-width: 90%;
 }
 
 .emoji {
