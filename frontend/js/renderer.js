@@ -39,6 +39,10 @@ let renderMessage = function (m) {
             `<p class="timeStamp" id="${m.createdAt}" hidden>${formatDate(new Date(m.createdAt))}</p>
             <p class="messagecontent selectable" id="${m.id}" authorid="${m.author.id}">${m.content}</p>`
     }
+
+    if (newMessage.querySelector('.messagecontent').textContent.replace(/ /g, '') == '' && Array.from(newMessage.querySelectorAll('.emoji')).length <= 30) {
+        Array.from(newMessage.querySelectorAll('.emoji')).forEach(e => { e.style.width = '48px'; e.style.height = '48px' })
+    }
     html.msgcontainer.append(newMessage)
 }
 
@@ -70,7 +74,6 @@ let renderGuild = function (g) {
     runOnceRefreshHtmlElements(html)
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
-    console.log(typeof g.icon)
     if (!g.icon || g.icon == null) newGuild.innerHTML = `<div class="guildIcon" id="${g.id}" src="${g.icon}">${g.name.split(' ').map(w => w.split('').shift()).join('')}</div>`
     else newGuild.innerHTML = `<img class="guildIcon" id="${g.id}" src="${g.icon}">`
 
