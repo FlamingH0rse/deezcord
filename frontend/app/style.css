@@ -204,6 +204,8 @@ html,
 
 /* top part of main */
 .toppart {
+    border-bottom: solid 1px #1F2023;
+
     background-color: #1E1F22;
     height: 48px;
     display: flex;

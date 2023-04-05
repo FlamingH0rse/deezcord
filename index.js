@@ -44,8 +44,8 @@ const createWindow = () => {
         backgroundColor: '#202225',
         width: 900,
         height: 600,
-        minWidth: 900,
-        minHeight: 600,
+        minWidth: 940,
+        minHeight: 500,
         titleBarStyle: 'hidden',
         fullscreenable: false,
         icon: "./frontend/assets/appicon.png",
@@ -105,7 +105,7 @@ app.whenReady().then(async () => {
     // Checking for updates
     createLoadingWindow()
 
-    await sleep(3000)
+    await sleep(10000)
 
     // Starting
     await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), path.join(app.getPath('appData'), 'deezcord'))
