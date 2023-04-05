@@ -60,7 +60,7 @@ html,
 }
 
 #close:hover {
-    box-shadow: inset 0 0 100px 100px rgba(255, 0, 0, 0.9);
+    box-shadow: inset 0 0 100px 100px rgb(219, 48, 48);
 }
 
 #minimize:focus,
