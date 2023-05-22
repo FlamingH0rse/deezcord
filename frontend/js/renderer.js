@@ -46,7 +46,7 @@ let renderMessage = function (m) {
     }
     if (html.msgcontainer.lastChild) html.msgcontainer.lastChild.style['margin-bottom'] = '0px'
     html.msgcontainer.append(newMessage)
-    html.msgcontainer.lastChild.style['margin-bottom'] = '30px'
+    html.msgcontainer.lastChild.style['margin-bottom'] = '20px'
     html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
 }
 
