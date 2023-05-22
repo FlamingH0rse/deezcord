@@ -39,22 +39,41 @@
                         <img class="channelIcon" src="../assets/channel.svg"
                             style="width:24px; height:24px; margin-left:8px; margin-right:8px;">
                         <div class="channeltopname"></div>
-                        <div class="othertopicons"
-                            style="-webkit-mask: url('../assets/thread.svg') no-repeat center; mask: url('../assets/thread.svg') no-repeat center;">
+                        <div class="othertopicons">
+                            <div class="actualtopicon" 
+                                style="-webkit-mask: url('../assets/thread.svg') no-repeat center; mask: url('../assets/thread.svg') no-repeat center;">
+                            </div>
+                            
+                            <span id="threadstip" class="othertopiconstooltip">Threads</span>
                         </div>
-                        <div class="othertopicons"
-                            style="-webkit-mask: url(../assets/notification_settings.svg) no-repeat center; mask: url(../assets/notification_settings.svg) no-repeat center;">
-                        </div>
-                        <div class="othertopicons"
-                            style="-webkit-mask: url(../assets/pinned_messages.svg) no-repeat center; mask: url(../assets/pinned_messages.svg) no-repeat center;">
-                        </div>
-                        <div class="othertopicons" id="memberlisttoggle"
-                            style="-webkit-mask: url(../assets/member_list_toggle.svg) no-repeat center; mask: url(../assets/member_list_toggle.svg) no-repeat center;">
-                        </div>
-                        <div class="othertopicons" id="help"
-                            style="-webkit-mask: url(../assets/top_help.svg) no-repeat center; mask: url(../assets/top_help.svg) no-repeat center;">
-                        </div>
+                        <div class="othertopicons">
+                            <div class="actualtopicon" 
+                                style="-webkit-mask: url(../assets/notification_settings.svg) no-repeat center; mask: url(../assets/notification_settings.svg) no-repeat center;">
+                            </div>
 
+                            <span class="othertopiconstooltip">Notification Settings</span>
+                        </div>
+                        <div class="othertopicons">
+                            <div class="actualtopicon" 
+                                style="-webkit-mask: url(../assets/pinned_messages.svg) no-repeat center; mask: url(../assets/pinned_messages.svg) no-repeat center;">
+                            </div>
+
+                            <span class="othertopiconstooltip">Pinned Messages</span>
+                        </div>
+                        <div class="othertopicons">
+                            <div id="memberlisttoggle" class="actualtopicon" 
+                                style="-webkit-mask: url(../assets/member_list_toggle.svg) no-repeat center; mask: url(../assets/member_list_toggle.svg) no-repeat center;">
+                            </div>
+
+                            <span id="memberliststip">Show Member Lists</span>
+                        </div>
+                        <div class="othertopicons" id="help">
+                            <div class="actualtopicon" 
+                                style="-webkit-mask: url(../assets/top_help.svg) no-repeat center; mask: url(../assets/top_help.svg) no-repeat center;">
+                            </div>
+
+                            <span class="othertopiconstooltip">Help</span>
+                        </div>
                     </div>
                 </div>
                 <div class="bottompart">

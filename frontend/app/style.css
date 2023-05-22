@@ -256,16 +256,94 @@ html,
 }
 
 .othertopicons {
-    background-color: #B5BAC1;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
+    position: relative;
+
     margin-left: 8px;
     margin-right: 8px;
+    display: inline-block;
 }
 
-.othertopicons:hover {
+.actualtopicon {
+    background-color: #B5BAC1;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* basically a text that displays */
+.othertopiconstooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: #fff;
+
+    left: 50%;
+    bottom: -164%;
+    transform: translateX(-50%);
+
+    border-radius: 7px;
+    padding: 5px 10px;
+    text-align: center;
+
+    white-space: nowrap;
+
+    z-index: 1;
+}
+
+/* the triangle design */
+.othertopiconstooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+/* Memberlist Button needs a separate tooltip since its very large */
+#memberliststip {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: #fff;
+
+    right: -180%;
+    bottom: -164%;
+
+    border-radius: 7px;
+    padding: 5px 10px;
+    text-align: center;
+
+    white-space: nowrap;
+
+    z-index: 1;
+}
+
+#memberliststip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 64%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+/* makes memberlist tip visible when memberlist gets hovered */
+#memberlisttoggle:hover + #memberliststip {
+    visibility: visible;
+}
+
+/* makes the icon glow instead of the parent itself */
+.othertopicons:hover > :first-child {
     background-color: white !important;
+}
+
+.othertopicons:hover .othertopiconstooltip{
+    visibility: visible;
 }
 
 /* bottom part of main */
@@ -427,7 +505,7 @@ html,
 }
 
 /* make the first messages in a message start at the bottom instead of top */
-.msgcontainer > :first-child {
+.msgcontainer> :first-child {
     margin-top: auto !important;
 }
 
@@ -445,7 +523,7 @@ html,
 /* the messages itself */
 .message {
     flex-grow: 0;
-    
+
     margin-top: 11px;
 
     /* temporary fix (needs to set height at 48px at minimum)*/
@@ -530,22 +608,27 @@ html,
     height: 22px;
 }
 
-.usermention, .rolemention, .channelmention {
+.usermention,
+.rolemention,
+.channelmention {
     width: max-content;
     border-radius: 3px;
     padding-left: 2px;
     padding-right: 2px;
 }
 
-.usermention, .channelmention {
+.usermention,
+.channelmention {
     background-color: rgba(88, 101, 242, 0.3);
     color: rgb(201, 205, 251);
 }
 
-.usermention:hover, .channelmention:hover {
+.usermention:hover,
+.channelmention:hover {
     color: white;
     background-color: rgba(88, 101, 242, 1);
 }
+
 .messagecont {
     padding-left: 72px;
 }
