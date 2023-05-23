@@ -566,6 +566,10 @@ html,
     display: flex;
 }
 
+.message:hover {
+    background-color: #2E3035;
+}
+
 .msgcompartment {
     margin-bottom: 3px;
     width: 100%;
@@ -666,6 +670,10 @@ html,
 
 .messagecont {
     padding-left: 72px;
+}
+
+.messagecont:hover {
+    background-color: #2E3035;
 }
 
 /* where u can type messages */
