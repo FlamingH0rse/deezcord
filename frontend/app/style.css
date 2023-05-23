@@ -148,6 +148,7 @@ html,
 }
 
 .guild {
+    position: relative;
     height: 48px;
     margin-bottom: 8px;
 }
@@ -168,6 +169,40 @@ html,
     align-items: center;
     justify-content: center;
     background-color: #313338;
+}
+
+.guildToolTip {
+    visibility: hidden;
+    position: absolute;
+    top: 10px;
+    left: 120%;
+
+    padding: 5px 10px;
+    border-radius: 7px;
+    background-color: black;
+
+    white-space: nowrap;
+    color: #ffffffdc;
+    text-align: center;
+    font-size: 17px;
+    font-family: gg sans;
+
+    z-index: 1;
+}
+
+.guildToolTip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.guildIcon:hover + .guildToolTip {
+    visibility: visible;
 }
 
 .guildIcon:hover {
@@ -333,16 +368,16 @@ html,
 }
 
 /* makes memberlist tip visible when memberlist gets hovered */
-#memberlisttoggle:hover + #memberliststip {
+#memberlisttoggle:hover+#memberliststip {
     visibility: visible;
 }
 
 /* makes the icon glow instead of the parent itself */
-.othertopicons:hover > :first-child {
+.othertopicons:hover> :first-child {
     background-color: white !important;
 }
 
-.othertopicons:hover .othertopiconstooltip{
+.othertopicons:hover .othertopiconstooltip {
     visibility: visible;
 }
 

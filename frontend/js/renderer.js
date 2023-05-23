@@ -78,8 +78,8 @@ let renderGuild = function (g) {
     runOnceRefreshHtmlElements(html)
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
-    if (!g.icon || g.icon == null) newGuild.innerHTML = `<div class="guildIcon" id="${g.id}" src="${g.icon}">${g.name.split(' ').map(w => w.split('').shift()).join('')}</div>`
-    else newGuild.innerHTML = `<img class="guildIcon" id="${g.id}" src="${g.icon}">`
+    if (!g.icon || g.icon == null) newGuild.innerHTML = `<div class="guildIcon" id="${g.id}" src="${g.icon}">${g.name.split(' ').map(w => w.split('').shift()).join('')}</div><span class="guildToolTip">${g.name}</span>`
+    else newGuild.innerHTML = `<img class="guildIcon" id="${g.id}" src="${g.icon}"><span class="guildToolTip">${g.name}</span>`
 
     html.guildlist.append(newGuild)
     newGuild.children[0].addEventListener('click', async e => {
