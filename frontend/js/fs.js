@@ -6,13 +6,13 @@ const { validateJson, APP_NAME } = require('./misc.js')
 function getAppDataPath() {
     switch (process.platform) {
         case 'darwin': {
-            return path.join(process.env.HOME, 'Library', 'Application Support', APP_NAME);
+            return path.join(process.env.HOME, 'Library', 'Application Support', APP_NAME)
         }
         case 'win32': {
-            return path.join(process.env.APPDATA, APP_NAME);
+            return path.join(process.env.APPDATA, APP_NAME)
         }
         case 'linux': {
-            return path.join(process.env.HOME, APP_NAME);
+            return path.join(process.env.HOME, APP_NAME)
         }
         default: {
             console.error(`Unsupported OS: ${process.platform}`)
@@ -44,31 +44,34 @@ function resolveAppData(frontPath, appDataDir) {
 
         /* Check for files */
         for (let file in appDataTemplate) {
-            let resolveFile = new Promise((res, rej) => {
-                let filePath = path.join(appDataDir, `${file}.json`)
-                let fileExists = fs.existsSync(filePath)
-
-                if (fileExists && typeof validateJson(readAppData(file, false)) == 'object' && Object.keys(appDataTemplate[file]).toString() == Object.keys(require(filePath)).toString()) {
-                    console.log(`${filePath} already exists, skipping...`)
-                    res()
-                }
-                else {
-                    console.log('Trying to give WRITE permission to file')
-                    fs.chmod(filePath, 0o600, () => {
-                        console.log('Trying to write to file')
-                        fs.writeFile(filePath, JSON.stringify(appDataTemplate[file], null, '\t'), err => {
-                            if (err) reject(err)
-                            else {
-                                console.log(`Created appdata file: ${filePath}`)
-                                res()
-                            }
-                        })
-                    })
-                }
-            })
-            await resolveFile
+            try { await resolveFile }
+            catch (err) { reject(err) }
+            
         }
         resolve()
+    })
+}
+function resolveFile() {
+    return new Promise((res, rej) => {
+        let filePath = path.join(appDataDir, `${file}.json`)
+        let fileExists = fs.existsSync(filePath)
+
+        if (fileExists && typeof validateJson(readAppData(file, false)) == 'object' && Object.keys(appDataTemplate[file]).toString() == Object.keys(require(filePath)).toString()) {
+            console.log(`${filePath} already exists, skipping...`)
+            res()
+        } else {
+            console.log('Trying to give WRITE permission to file')
+            fs.chmod(filePath, 0o600, () => {
+                console.log('Trying to write to file')
+                fs.writeFile(filePath, JSON.stringify(appDataTemplate[file], null, '\t'), err => {
+                    if (err) rej(err)
+                    else {
+                        console.log(`Created appdata file: ${filePath}`)
+                        res()
+                    }
+                })
+            })
+        }
     })
 }
 function readAppData(filename, parseAsJson) {
