@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-=======
-const { app, BrowserWindow, ipcMain, dialog, autoUpdater } = require('electron')
-
-//discord:
-const Discord = require('discord.js');
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
-
->>>>>>> 295ea0d22f1f00296f5f6d83d74887effe04a723
 const path = require('path')
 
-const {app, BrowserWindow, ipcMain, dialog} = require('electron')
+const {app, BrowserWindow, ipcMain, autoUpdater} = require('electron')
 
 // Discord:
 const {Client, GatewayIntentBits} = require('discord.js');
-
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers]});
 
 // Sleep function
-function sleep(ms) { return new Promise(res => setTimeout(res, ms)) }
+function sleep(ms) {
+    return new Promise(res => setTimeout(res, ms))
+}
 
 let mainWindow
 let loadingWindow
@@ -45,7 +36,7 @@ const createLoadingWindow = () => {
     loadingWindow.loadFile('./frontend/loadingscreen/loading.html')
 }
 
-const createWindow = () => {
+const createMainWindow = () => {
     console.log('Creating window...')
 
     mainWindow = new BrowserWindow({
@@ -87,7 +78,6 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', message => {
-    console.log('message received')
     message.content = require('./frontend/js/misc.js').clientParse(client, message.content, message.guildId)
     mainWindow.webContents.send('frontend', {
         title: 'newMessage',
@@ -119,7 +109,7 @@ app.whenReady().then(async () => {
     const appDataDir = path.join(app.getPath('appData'), 'deezcord')
     await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), appDataDir)
 
-    createWindow()
+    createMainWindow()
     loadingWindow.close()
 
     ipcMain.handle('backend', async (event, d) => {
@@ -226,7 +216,7 @@ app.whenReady().then(async () => {
         if (d.title === 'sendMessage') {
             client.channels.cache.get(d.channelID).send(d.message)
         }
-        if (d.title == "userTyping") {
+        if (d.title === "userTyping") {
             client.channels.cache.get(d.channelID).sendTyping()
         }
     })
@@ -237,7 +227,7 @@ app.whenReady().then(async () => {
     })
 
     app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+        if (BrowserWindow.getAllWindows().length === 0) createMainWindow()
     })
 })
 
@@ -245,7 +235,9 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
 
-autoUpdater.on('update-downloaded', () => { autoUpdater.quitAndInstall() })
+autoUpdater.on('update-downloaded', () => {
+    autoUpdater.quitAndInstall()
+})
 
 process.on('uncaughtException', err => console.log(err))
 
