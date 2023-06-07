@@ -1,0 +1,48 @@
+/* memberslist */
+.memberslist {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 1px;
+    margin-right: 2px;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.memberslist:hover::-webkit-scrollbar-thumb {
+    background-color: #1A1B1E;
+}
+
+.memberslist::-webkit-scrollbar {
+    width: 4px;
+}
+
+.memberslist::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: transparent;
+}
+
+/* the users itself */
+.user {
+    flex-shrink: 0;
+
+    margin-top: 5px;
+    margin-left: 15px;
+    display: flex;
+    height: 42px;
+}
+
+.userAvatar {
+    margin-right: 9px;
+    height: 32px;
+    width: 32px;
+
+    border-radius: 50%;
+}
+
+.userName {
+    font-family: gg sans;
+    font-size: 16px;
+    color: #949BA4;
+}

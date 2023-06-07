@@ -1,0 +1,130 @@
+/* This css is for the main parts only */
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html,
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.selectable {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* wrapper */
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ok */
+.appsection {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* main part */
+.guildsection {
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* top part of main */
+.toppart {
+    border-bottom: solid 1px #1F2023;
+    background-color: #1E1F22;
+    height: 48px;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    filter: drop-shadow(0 2px rgba(32, 34, 37, 0.3))
+}
+
+/* middlepart */
+.middlepart {
+    background-color: #313338;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* bottom part of main */
+.bottompart {
+    background-color: beige;
+    display: flex;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+/* leftside */
+.leftside {
+    background-color: #2B2D31;
+    width: 240px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    font-family: gg sans;
+    display: flex;
+    flex-direction: column;
+}
+
+/* rightside */
+.rightside {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #2B2D31;
+    width: 240px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.status {
+    background-color: #232428;
+    height: 52px;
+    filter: drop-shadow(0 1px #36393F);
+
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* ur profile (bottom part of leftside) */
+
+.profile {
+    color: white;
+    background-color: #232428;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.botIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.botName {
+    font-size: 14px;
+}

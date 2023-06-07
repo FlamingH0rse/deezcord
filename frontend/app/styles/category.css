@@ -1,0 +1,22 @@
+.category {
+    flex-shrink: 0;
+    user-select: none;
+    color: #7B7F85;
+    width: 232px;
+    height: 24px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.categoryName {
+    font-size: 12px;
+    line-height: 16px;
+    width: 216px;
+    margin-left: 16px;
+    font-family: gg sans;
+}
+
+.category:hover {
+    color: white;
+}

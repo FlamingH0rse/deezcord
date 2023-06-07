@@ -1,0 +1,54 @@
+/* titlebar */
+
+.titlebar {
+    background-color: #1E1F22;
+    height: 22px;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#minimize,
+#maximize,
+#close {
+    -webkit-app-region: no-drag;
+    height: 22px;
+    width: 28px;
+    border: none;
+    background: none;
+    color: #B5BAC1;
+    cursor: pointer;
+}
+
+#minimize:hover,
+#maximize:hover {
+    box-shadow: inset 0 0 100px 100px rgba(204, 203, 203, 0.1);
+}
+
+#close:hover {
+    box-shadow: inset 0 0 100px 100px rgb(230, 63, 63);
+}
+
+#minimize:focus,
+#maximize:focus,
+#close:focus {
+    outline: none
+}
+
+#middleman {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#deez {
+    margin-left: 5px;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+}

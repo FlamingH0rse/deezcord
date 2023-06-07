@@ -1,0 +1,77 @@
+/* All tooltips will be here  */
+
+/* basically a text that displays */
+.othertopiconstooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: #fff;
+
+    left: 50%;
+    bottom: -164%;
+    transform: translateX(-50%);
+
+    border-radius: 7px;
+    padding: 5px 10px;
+    text-align: center;
+
+    white-space: nowrap;
+
+    z-index: 1;
+}
+
+/* the triangle design */
+.othertopiconstooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+/* Memberlist Button needs a separate tooltip since its very large */
+#memberliststip {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: #fff;
+
+    right: -180%;
+    bottom: -164%;
+
+    border-radius: 7px;
+    padding: 5px 10px;
+    text-align: center;
+
+    white-space: nowrap;
+
+    z-index: 1;
+}
+
+#memberliststip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 64%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+/* makes memberlist tip visible when memberlist gets hovered */
+#memberlisttoggle:hover+#memberliststip {
+    visibility: visible;
+}
+
+/* makes the icon glow instead of the parent itself */
+.othertopicons:hover> :first-child {
+    background-color: white !important;
+}
+
+.othertopicons:hover .othertopiconstooltip {
+    visibility: visible;
+}

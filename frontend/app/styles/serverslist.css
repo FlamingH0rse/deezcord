@@ -1,0 +1,140 @@
+/* servers list */
+
+.guildlist {
+    background-color: #1E1F22;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 72px;
+    padding-top: 4px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.discordlogo {
+    color: #DBDEE1;
+    display: flex;
+    border-radius: 50%;
+    cursor: pointer;
+
+    margin-top: 5px;
+    margin-bottom: 7px;
+    order: 1;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    width: 48px;
+    height: 48px;
+
+    background-color: #313338;
+}
+
+.discordlogo:hover {
+    animation: discordlogoHover 0.25s forwards;
+}
+
+.discordlogo:hover>.dlogoimage {
+    animation: dlogoImageHover 0.25s forwards;
+}
+
+.dlogoimage {
+    filter: invert(90%) sepia(5%) saturate(142%) hue-rotate(169deg) brightness(101%) contrast(88%);
+    display: block;
+    margin: auto;
+    justify-content: center;
+}
+
+.guildseparator {
+    margin-bottom: 8px;
+    order: 1;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    width: 32px;
+    height: 2px;
+
+    border-radius: 1px;
+    background-color: #4E50587A;
+}
+
+.guild {
+    position: relative;
+    height: 48px;
+    margin-bottom: 8px;
+}
+
+.guildIcon {
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.guildIcon[src='null'] {
+    color: white;
+    font-family: gg sans;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #313338;
+}
+
+.guildToolTip {
+    visibility: hidden;
+    position: absolute;
+    top: 10px;
+    left: 120%;
+
+    padding: 5px 10px;
+    border-radius: 7px;
+    background-color: black;
+
+    white-space: nowrap;
+    color: #ffffffdc;
+    text-align: center;
+    font-size: 17px;
+    font-family: gg sans;
+
+    z-index: 1;
+}
+
+.guildToolTip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.guildIcon:hover + .guildToolTip {
+    visibility: visible;
+}
+
+.guildIcon:hover {
+    animation: guildHover 0.25s forwards;
+}
+
+@keyframes guildHover {
+    100% {
+        border-radius: 30%;
+    }
+}
+
+@keyframes discordlogoHover {
+    100% {
+        background-color: #5865F2;
+        border-radius: 30%;
+    }
+}
+
+@keyframes dlogoImageHover {
+    100% {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(284deg) brightness(104%) contrast(102%);
+    }
+}
