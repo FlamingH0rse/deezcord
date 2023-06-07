@@ -1,8 +1,8 @@
 node_modules
+.vscode
+.idea
 config.json
 frontend/app-data/*
 playground.html
 playground.css
 test.js
-.idea
-.vscode
