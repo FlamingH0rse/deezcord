@@ -1,0 +1,181 @@
+.msgcontainer {
+    display: flex;
+    flex-direction: column;
+    height: 1px;
+    overflow-y: scroll;
+    margin-right: 4px;
+    font-family: gg sans;
+    background-color: #313338;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* make the first messages in a message start at the bottom instead of top */
+.msgcontainer> :first-child {
+    margin-top: auto !important;
+}
+
+.msgcontainer::-webkit-scrollbar {
+    background-color: #2B2D31;
+    border-radius: 8px;
+    width: 8px;
+}
+
+.msgcontainer::-webkit-scrollbar-thumb {
+    background-color: #1A1B1E;
+    border-radius: 8px;
+}
+
+/* the messages itself */
+.message {
+    flex-grow: 0;
+
+    margin-top: 11px;
+
+    /* temporary fix (needs to set height at 48px at minimum)*/
+    height: max-content;
+    display: flex;
+}
+
+.message:hover {
+    background-color: #2E3035;
+}
+
+.msgcompartment {
+    margin-bottom: 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.uppercmp {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.authorName {
+    cursor: pointer;
+
+    margin-right: 6px;
+    color: #F2F3F5;
+    font: gg sans;
+    font-size: 16px;
+}
+
+.authorName:hover {
+    text-decoration: underline;
+}
+
+.botBadge {
+    width: 27px;
+    height: 15px;
+    background-color: #5865F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    margin-left: 4px;
+    margin-top: 0.75px;
+    color: white;
+    font-size: 10px;
+    font-family: gg sans;
+}
+
+.timeStamp {
+    font: gg sans;
+    color: gray;
+    margin-left: 6px;
+    font-size: 12px;
+    align-self: center;
+}
+
+.authorAvatar {
+    cursor: pointer;
+
+    margin-left: 16px;
+    margin-right: 16px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* this is where the message gets stored */
+.messagecontentparent {
+    width: 100%;
+}
+
+.messagecontent {
+    font: gg sans;
+    color: #DBDEE1;
+    font-size: 16px;
+    word-break: break-all;
+    flex-grow: 1;
+    max-width: 90%;
+}
+
+.emoji {
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
+}
+
+.usermention,
+.rolemention,
+.channelmention {
+    width: max-content;
+    border-radius: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.usermention,
+.channelmention {
+    background-color: rgba(88, 101, 242, 0.3);
+    color: rgb(201, 205, 251);
+}
+
+.usermention:hover,
+.channelmention:hover {
+    color: white;
+    background-color: rgba(88, 101, 242, 1);
+}
+
+.messagecont {
+    padding-left: 72px;
+}
+
+.messagecont:hover {
+    background-color: #2E3035;
+}
+
+/* where u can type messages */
+.inputsection {
+    background-color: #383A40;
+    display: flex;
+    padding-right: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 22px;
+    border-radius: 8px;
+    height: 44px;
+}
+
+#attachfile {
+    background-color: transparent;
+    height: 44px;
+    width: 56px;
+    border: none;
+    cursor: pointer;
+}
+
+#inputbox {
+    font-size: 16px;
+    font-family: gg sans;
+    color: white;
+    background-color: transparent;
+    height: 44px;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+}

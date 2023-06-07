@@ -1,0 +1,57 @@
+/* the top of channellist */
+
+.channellisttop {
+    border-radius: 8px 0px 0px 0px;
+
+    color: #F2F3F5;
+    font-family: gg sans;
+    font-weight: 580;
+
+    background-color: #2B2D31;
+    width: 224px;
+    padding-left: 16px;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.channellisttop:hover {
+    background-color: #34363B;
+}
+
+.channeltop {
+    color: white;
+    font-size: 16px;
+    font-family: gg sans;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #313338;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1
+}
+
+.channeltopname {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.othertopicons {
+    position: relative;
+
+    margin-left: 8px;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.actualtopicon {
+    background-color: #B5BAC1;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

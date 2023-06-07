@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 const { app, BrowserWindow, ipcMain, dialog, autoUpdater } = require('electron')
 
 //discord:
@@ -7,15 +5,7 @@ const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
 
->>>>>>> 295ea0d22f1f00296f5f6d83d74887effe04a723
 const path = require('path')
-
-const {app, BrowserWindow, ipcMain, dialog} = require('electron')
-
-// Discord:
-const {Client, GatewayIntentBits} = require('discord.js');
-
-const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers]});
 
 // Sleep function
 function sleep(ms) { return new Promise(res => setTimeout(res, ms)) }
