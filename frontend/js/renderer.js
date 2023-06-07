@@ -7,7 +7,7 @@ const appState = require(path.join(getAppDataPath(), 'app-state.json'))
 
 let html = {}
 
-let renderUserList = function (u) {
+function renderUserList(u) {
     runOnceRefreshHtmlElements(html)
     let newUser = document.createElement('div')
     newUser.classList.add('user')
@@ -17,7 +17,7 @@ let renderUserList = function (u) {
     html.memberslist.append(newUser)
 }
 
-let renderMessage = function (m) {
+function renderMessage(m) {
     runOnceRefreshHtmlElements(html)
     let newMessage = document.createElement('div')
     newMessage.classList.add('message')
@@ -50,7 +50,7 @@ let renderMessage = function (m) {
     html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
 }
 
-let renderChannelList = function (c, guildID) {
+function renderChannelList(c, guildID) {
     runOnceRefreshHtmlElements(html)
     if (c.type == 0) {
         let newChannel = document.createElement('div')
@@ -74,7 +74,7 @@ let renderChannelList = function (c, guildID) {
     }
 }
 
-let renderGuild = function (g) {
+function renderGuild(g) {
     runOnceRefreshHtmlElements(html)
     let newGuild = document.createElement('div')
     newGuild.classList.add('guild')
