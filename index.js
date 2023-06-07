@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, autoUpdater } = require('electron')
 
 //discord:
 const Discord = require('discord.js');
@@ -8,9 +8,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 const path = require('path')
 
 // Sleep function
-function sleep(ms) {
-    return new Promise(res => setTimeout(res, ms))
-}
+function sleep(ms) { return new Promise(res => setTimeout(res, ms)) }
 
 let mainWindow
 let loadingWindow
@@ -100,12 +98,17 @@ client.on('messageCreate', message => {
         }
     })
 })
+
 app.whenReady().then(async () => {
     // Simulate auto update for now
     // Checking for updates
+
     createLoadingWindow()
 
     await sleep(10000)
+
+    // autoUpdater.setFeedURL({ url: "" })
+    // autoUpdater.checkForUpdates()
 
     // Starting
     await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), path.join(app.getPath('appData'), 'deezcord'))
@@ -218,6 +221,9 @@ app.whenReady().then(async () => {
         if (d.title == 'sendMessage') {
             client.channels.cache.get(d.channelID).send(d.message)
         }
+        if (d.title == "userTyping") {
+            client.channels.cache.get(d.channelID).sendTyping()
+        }
     })
 
     mainWindow.on('resize', () => {
@@ -233,6 +239,8 @@ app.whenReady().then(async () => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
+
+autoUpdater.on('update-downloaded', () => { autoUpdater.quitAndInstall() })
 
 process.on('uncaughtException', err => console.log(err))
 
