@@ -1,11 +1,11 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
-
-//discord:
-const Discord = require('discord.js');
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
-
 const path = require('path')
+
+const {app, BrowserWindow, ipcMain, dialog} = require('electron')
+
+// Discord:
+const {Client, GatewayIntentBits} = require('discord.js');
+
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers]});
 
 // Sleep function
 function sleep(ms) {
@@ -27,7 +27,7 @@ const createLoadingWindow = () => {
         movable: true,
         minimizable: false,
         fullscreenable: false,
-        icon: "./frontend/assets/appicon.png",
+        icon: "./frontend/assets/app_icon.png",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true,
@@ -48,7 +48,7 @@ const createWindow = () => {
         minHeight: 500,
         titleBarStyle: 'hidden',
         fullscreenable: false,
-        icon: "./frontend/assets/appicon.png",
+        icon: "./frontend/assets/app_icon.png",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true,
@@ -61,23 +61,18 @@ const createWindow = () => {
 
 let discordConnected = false
 const connectDiscord = (token) => {
-    return new Promise(async (res, rej) => {
-        try {
+    return new Promise((res, rej) => {
+        client.login(token).then(() => {
             discordConnected = true
-            await client.login(token)
             res('loginSuccess')
-        } catch (err) {
-            discordConnected = true
-            console.log('Wrong token')
-            res('loginFailure')
-        }
+        }).catch(() => rej('loginFailure'))
     })
 }
 
 client.once('ready', () => {
     console.log('Connected to Discord');
     client.user.setActivity("DiscordForBots", {
-        type: "PLAYING",
+        type: ActivityType,
         url: "https://www.github.com/FlamingH0rse/"
     });
     discordConnected = true
@@ -100,6 +95,7 @@ client.on('messageCreate', message => {
         }
     })
 })
+
 app.whenReady().then(async () => {
     // Simulate auto update for now
     // Checking for updates
@@ -108,37 +104,37 @@ app.whenReady().then(async () => {
     await sleep(10000)
 
     // Starting
-    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), path.join(app.getPath('appData'), 'deezcord'))
+    const appDataDir = path.join(app.getPath('appData'), 'deezcord')
+    await require('./frontend/js/fs.js').resolveAppData(path.resolve('./frontend'), appDataDir)
 
     createWindow()
     loadingWindow.close()
 
     ipcMain.handle('backend', async (event, d) => {
         console.log(d)
-        if (d.title == 'loginDiscord') {
+        if (d.title === 'loginDiscord') {
             if (discordConnected) return
             else return connectDiscord(d.token)
         }
 
         // Window Resizing
 
-        if (d.title == 'minimizeWin') mainWindow.minimize()
-        else if (d.title == 'maximizeWin') {
+        if (d.title === 'minimizeWin') mainWindow.minimize()
+        else if (d.title === 'maximizeWin') {
             if (mainWindow.isMaximized()) {
                 mainWindow.unmaximize()
-                return { title: 'unMaximized' }
+                return {title: 'unMaximized'}
             } else {
                 mainWindow.maximize();
-                return { title: 'maximized' }
+                return {title: 'maximized'}
             }
-        }
-        else if (d.title == 'closeWin') mainWindow.close()
+        } else if (d.title === 'closeWin') mainWindow.close()
 
         if (!discordConnected) return
 
         // Discord Client Data Stuff
 
-        if (d.title == 'initInfo') {
+        if (d.title === 'initInfo') {
             return {
                 user: {
                     username: client.user.tag,
@@ -153,18 +149,18 @@ app.whenReady().then(async () => {
                 })
             }
         }
-        if (d.title == 'navGuild') {
-            if (d.type == 'GUILD' && client.guilds.cache.get(d.id)) {
+        if (d.title === 'navGuild') {
+            if (d.type === 'GUILD' && client.guilds.cache.get(d.id)) {
                 let channels = client.guilds.cache.get(d.id).channels.cache
 
-                let categories = channels.filter(c => c.type == 4).sort((a, b) => a.rawPosition - b.rawPosition)
-                let noCatChannels = channels.filter(c => c.type == 0 && c.parentId == null).sort((a, b) => a.rawPosition - b.rawPosition)
-                let catChannels = channels.filter(c => c.type == 0 && c.parentId != null).sort((a, b) => a.rawPosition - b.rawPosition)
+                let categories = channels.filter(c => c.type === 4).sort((a, b) => a.rawPosition - b.rawPosition)
+                let noCatChannels = channels.filter(c => c.type === 0 && c.parentId == null).sort((a, b) => a.rawPosition - b.rawPosition)
+                let catChannels = channels.filter(c => c.type === 0 && c.parentId != null).sort((a, b) => a.rawPosition - b.rawPosition)
 
                 let sortedCh = Array.from(noCatChannels)
                 categories.forEach((cat, key) => {
                     sortedCh.push([key, cat])
-                    let currentCh = catChannels.filter(c => c.parentId == cat.id)
+                    let currentCh = catChannels.filter(c => c.parentId === cat.id)
                     sortedCh = sortedCh.concat(Array.from(currentCh))
                 })
 
@@ -190,11 +186,11 @@ app.whenReady().then(async () => {
                 }
             }
         }
-        if (d.title == 'navChannel') {
+        if (d.title === 'navChannel') {
             let channel = client.guilds.cache.get(d.guildID).channels.cache.get(d.id)
             let res = {}
 
-            channel.messages.fetch({ limit: 100 }).then(messages => {
+            channel.messages.fetch({limit: 100}).then(messages => {
                 messages.reverse()
                 res.messages = messages.map(m => {
                     return {
@@ -215,14 +211,14 @@ app.whenReady().then(async () => {
                 mainWindow.webContents.send('frontend', res)
             })
         }
-        if (d.title == 'sendMessage') {
+        if (d.title === 'sendMessage') {
             client.channels.cache.get(d.channelID).send(d.message)
         }
     })
 
     mainWindow.on('resize', () => {
-        if (mainWindow.isMaximized()) mainWindow.webContents.send('frontend', { title: 'maximized' })
-        else mainWindow.webContents.send('frontend', { title: 'unMaximized' })
+        if (mainWindow.isMaximized()) mainWindow.webContents.send('frontend', {title: 'maximized'})
+        else mainWindow.webContents.send('frontend', {title: 'unMaximized'})
     })
 
     app.on('activate', () => {

@@ -22,11 +22,11 @@ function runOnceRefreshHtmlElements() {
         html.minimize.addEventListener('click', () => toBackend({ title: 'minimizeWin' }))
         html.maximize.addEventListener('click', async () => {
             let res = await toBackend({ title: 'maximizeWin' })
-            html.maximize.innerHTML = res.title == 'maximized' ? '❐' : '☐'
-            if (window.location.href.split('/').pop() != 'login.html') return
-            html.loginbox.style.width = res.title == 'maximized' ? '720px' : '416px'
-            html.loginbox.style.height = res.title == 'maximized' ? '344px' : '340px'
-            let toggleQR = res.title == 'maximized' ? 'true' : 'false'
+            html.maximize.innerHTML = res.title === 'maximized' ? '❐' : '☐'
+            if (window.location.href.split('/').pop() !== 'login.html') return
+            html.loginbox.style.width = res.title === 'maximized' ? '720px' : '416px'
+            html.loginbox.style.height = res.title === 'maximized' ? '344px' : '340px'
+            let toggleQR = res.title === 'maximized' ? 'true' : 'false'
             html.loginbox.setAttribute('QR', toggleQR)
 
         })
@@ -39,7 +39,7 @@ function runOnceRefreshHtmlElements() {
 ipcRenderer.on('frontend', (event, d) => {
     console.log(d)
     runOnceRefreshHtmlElements()
-    if (d.title == 'navChannelSuccess') {
+    if (d.title === 'navChannelSuccess') {
         html.inputbox.setAttribute('placeholder', `Message #${d.channelName}`)
         html.channeltopname.id = d.channelID
         html.channeltopname.innerHTML = d.channelName
@@ -52,23 +52,23 @@ ipcRenderer.on('frontend', (event, d) => {
         html.msgcontainer.scrollTop = html.msgcontainer.scrollHeight
 
         Array.from(html.channellist.children).forEach(c => c.classList.remove('currentChannel'))
-        Array.from(html.channellist.children).filter(c => c.id == d.channelID)[0].classList.add('currentChannel')
+        Array.from(html.channellist.children).filter(c => c.id === d.channelID)[0].classList.add('currentChannel')
     }
-    if (d.title == 'maximized' || d.title == 'unMaximized') {
-        html.maximize.innerHTML = d.title == 'maximized' ? '❐' : '☐'
-        if (window.location.href.split('/').pop() != 'login.html') return
-        html.loginbox.style.width = d.title == 'maximized' ? '720px' : '416px'
-        html.loginbox.style.height = d.title == 'maximized' ? '344px' : '340px'
-        html.loginbox?.setAttribute('QR', d.title == 'maximized' ? 'true' : 'false')
+    if (d.title === 'maximized' || d.title === 'unMaximized') {
+        html.maximize.innerHTML = d.title === 'maximized' ? '❐' : '☐'
+        if (window.location.href.split('/').pop() !== 'login.html') return
+        html.loginbox.style.width = d.title === 'maximized' ? '720px' : '416px'
+        html.loginbox.style.height = d.title === 'maximized' ? '344px' : '340px'
+        html.loginbox?.setAttribute('QR', d.title === 'maximized' ? 'true' : 'false')
     }
-    if (d.title == 'newMessage') {
+    if (d.title === 'newMessage') {
         console.log(d.channelID, html.channeltopname.id)
-        if (d.channelID == html.channeltopname.id) renderMessage(d)
+        if (d.channelID === html.channeltopname.id) renderMessage(d)
     }
 })
 window.addEventListener('load', async () => {
     runOnceRefreshHtmlElements()
-    if (window.location.href.split('/').pop() == 'app.html') {
+    if (window.location.href.split('/').pop() === 'app.html') {
         let initInfo = await toBackend({ title: 'initInfo' })
         html.profile.innerHTML =
             `<img class="botIcon" src="${initInfo.user.avatar}"></img>
@@ -95,11 +95,11 @@ window.addEventListener('load', async () => {
         })
         html.help.addEventListener('click', () => shell.openExternal('https://github.com/FlamingH0rse/deezcord'))
     }
-    if (window.location.href.split('/').pop() == 'login.html') {
+    if (window.location.href.split('/').pop() === 'login.html') {
         if (lastClient && discordAuthData.clients[lastClient]?.token) {
             html.loadOverlay.style.display = 'block'
-            let login = await toBackend({ title: 'loginDiscord', token: discordAuthData.clients[lastClient]?.token })
-            if (login == 'loginSuccess') return window.href.location = window.location.href = '../app/app.html'
+            let login = await toBackend({ title: 'loginDiscord', token: discordAuthData.clients[lastClient].token })
+            if (login === 'loginSuccess') return window.href.location = window.location.href = '../app/app.html'
             html.loadOverlay.style.display = 'none'
         }
         html.forgottoken.addEventListener('click', () => shell.openExternal('https://discord.com/developers/applications'))
@@ -114,7 +114,7 @@ window.addEventListener('load', async () => {
 
             html.loadOverlay.style.display = 'block'
             let login = await toBackend({ title: 'loginDiscord', token: html.tokenbox.value })
-            if (login == 'loginSuccess') {
+            if (login === 'loginSuccess') {
                 saveAppData('discord-auth', discordAuthData)
                 saveAppData('app-state', appState)
                 return window.href.location = window.location.href = '../app/app.html'
