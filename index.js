@@ -70,7 +70,7 @@ const connectDiscord = (token) => {
 client.once('ready', () => {
     console.log('Connected to Discord');
     client.user.setActivity("DiscordForBots", {
-        type: ActivityType,
+        type: Discord.ActivityType.Playing,
         url: "https://www.github.com/FlamingH0rse/"
     });
     discordConnected = true
