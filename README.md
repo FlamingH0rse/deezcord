@@ -41,7 +41,7 @@ For more info:
 <br/>
 **Discord:**
 - __flaming
-- blaming#1549
+- chronny1549
 
 ## License
 
